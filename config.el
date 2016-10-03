@@ -153,7 +153,7 @@
 (defun setup-appearance ()
   "Customize spacemacs appearance."
 
-  ;; show line numbers in the left gutter (*always*)
+  ;; Show line numbers in the left gutter (*always*)
   ;; (global-linum-mode t)
   )
 
