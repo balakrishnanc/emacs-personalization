@@ -155,6 +155,9 @@
 
   ;; Show line numbers in the left gutter (*always*)
   ;; (global-linum-mode t)
+
+  ;; Highlight current line.
+  (global-hl-line-mode -1)
   )
 
 (defun setup-key-bindings ()
