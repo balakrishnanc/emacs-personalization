@@ -173,7 +173,11 @@
   (global-set-key (kbd "C-M-]") 'comment-region)
   (global-set-key (kbd "C-M-[") 'uncomment-region)
 
-  (global-set-key "\C-k" 'kill-and-join-forward)
+  ;; Comment or Uncomment region in buffer.
+  (global-set-key (kbd "C-M-+") 'default-text-scale-increase)
+  (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+
+  (global-set-key (kbd "C-k") 'kill-and-join-forward)
 
   ;; Insert timestamp at point.
   (global-set-key '[f5] 'insert-timestamp)

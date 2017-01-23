@@ -13,7 +13,8 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq personalization-packages
       '(gnuplot-mode
-        goto-last-change))
+        goto-last-change
+        default-text-scale))
 
 ;; List of packages to exclude.
 (setq personalization-excluded-packages '())
@@ -26,5 +27,5 @@
   (use-package gnuplot-mode
     :mode ("\\.gpi\\'" "\\.plt\\'" "\\.plot\\'")))
 
-(defun personalization/init-sublime-themes ()
+(defun personalization/init-default-text-scale ()
   nil)
