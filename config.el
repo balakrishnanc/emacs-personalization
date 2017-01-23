@@ -170,8 +170,8 @@
   (global-set-key (kbd "C-M-'") 'align-regexp)
 
   ;; Comment or Uncomment region in buffer.
-  (global-set-key "\C-\M-]" 'comment-region)
-  (global-set-key "\C-\M-[" 'uncomment-region)
+  (global-set-key (kbd "C-M-]") 'comment-region)
+  (global-set-key (kbd "C-M-[") 'uncomment-region)
 
   (global-set-key "\C-k" 'kill-and-join-forward)
 
