@@ -55,13 +55,13 @@
 (defun setup-auto-saves-and-bkups ()
   "Setup auto-saves and auto-backups."
   (make-dir auto-saves-dir)
-  (setq auto-save-list-file-prefix
-        (concat auto-saves-dir ".as-"))
-  (setq auto-save-file-name-transforms
-        `((".*" ,auto-saves-dir t)))
+  (setq-default auto-save-list-file-prefix
+                (concat auto-saves-dir ".as-"))
+  (setq-default auto-save-file-name-transforms
+                `((".*" ,auto-saves-dir t)))
   (make-dir auto-bkups-dir)
-  (setq backup-directory-alist
-        `((".*" . ,auto-bkups-dir))))
+  (setq-default backup-directory-alist
+                `((".*" . ,auto-bkups-dir))))
 
 ;; ---( utility functions )---
 ;; `__
