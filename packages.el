@@ -19,13 +19,16 @@
 ;; List of packages to exclude.
 (setq personalization-excluded-packages '())
 
+(defun personalization/init-gnuplot-mode ()
+  (use-package gnuplot-mode
+    :mode ("\\.gp\\'"
+           "\\.gpi\\'"
+           "\\.plt\\'"
+           "\\.plot\\'")))
+
 (defun personalization/init-goto-last-change ()
   (use-package goto-last-change
     :bind ("C-x C-/" . goto-last-change)))
-
-(defun personalization/init-gnuplot-mode ()
-  (use-package gnuplot-mode
-    :mode ("\\.gpi\\'" "\\.plt\\'" "\\.plot\\'")))
 
 (defun personalization/init-default-text-scale ()
   nil)
