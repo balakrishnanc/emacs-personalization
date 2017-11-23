@@ -15,6 +15,9 @@
 (defvar code-templates-dir
   (expand-file-name "~/.code_templates"))
 
+(defvar emacs-config-dir
+  (expand-file-name "~/.emacs.d"))
+
 (defvar auto-saves-dir
   (concat temporary-file-directory
           (file-name-as-directory (user-login-name))
