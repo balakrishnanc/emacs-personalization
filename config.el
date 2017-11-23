@@ -63,7 +63,7 @@
   (setq-default backup-directory-alist
                 `((".*" . ,auto-bkups-dir))))
 
-;; ---( utility functions )---
+;; ---( Utility functions )---
 ;; `__
 
 (defun insert-timestamp ()
