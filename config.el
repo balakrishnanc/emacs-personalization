@@ -303,7 +303,7 @@
   ;; Highlight current line.
   (global-hl-line-mode -1))
 
-(defun setup-key-bindings ()
+(defun setup-common-key-bindings ()
   "Setup additional keybindings to packages."
 
   ;; Fill-up text based on column width.
@@ -320,14 +320,20 @@
   (global-set-key (kbd "C-M-+") 'default-text-scale-increase)
   (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 
+  ;; Avy.
+  (global-set-key (kbd "C-:") 'avy-goto-char)
+  (global-set-key (kbd "M-g g") 'avy-goto-line)
+
   (global-set-key (kbd "C-k") 'kill-and-join-forward)
 
   ;; Insert timestamp at point.
-  (global-set-key '[f5] 'insert-timestamp)
-  )
+  (global-set-key '[f5] 'insert-timestamp))
 
 (defun setup-edit-prefs ()
-  "Setup editor preferences for coding."
+  "Setup editor preferences."
+
+  (set-language-environment "UTF-8")
+  (set-default-coding-systems 'utf-8)
 
   ;; Use '4' spaces instead of a 'tab' character.
   (setq-default tab-width 4)
@@ -337,11 +343,11 @@
   (setq-default fill-column 80)
 
   ;; Ensure files always end with a new line.
-  (setq require-final-newline t)
+  (setq-default require-final-newline t)
 
   ;; Stop emacs from arbitrarily adding lines to the end of a file,
   ;;  when cursor is moved past the end of it.
-  (setq next-line-add-newlines nil)
+  (setq-default next-line-add-newlines nil)
 
   ;; Set execute permissions automatically when saving scripts.
   (add-hook 'after-save-hook
@@ -349,13 +355,36 @@
 
   ;; Automatically insert boilerplates.
   (add-hook 'find-file-hooks 'auto-insert)
-  (setq auto-insert-directory code-templates-dir)
-  (setq auto-insert-alist
+  (setq-default auto-insert-directory code-templates-dir)
+  (setq-default auto-insert-alist
         (loop for i in '("c" "cc" "clj" "cpp" "erl"
                          "go" "gpi" "h" "hs" "java"
                          "jl" "lisp" "pl" "plot" "py"
                          "scala" "scm" "sh" "sql")
               collecting (code-template i)))
-)
+
+  ;; To perform full-document previews.
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
+  ;; Show recently opened files in helm.
+  (setq-default helm-ff-file-name-history-use-recentf t)
+
+  (define-global-minor-mode global-hidden-mode-line-mode
+    hidden-mode-line-mode
+    (lambda () (hidden-mode-line-mode)))
+  (global-hidden-mode-line-mode))
+
+;; ---( Defining behaviors of modes )---
+;; `__
+(defun setup-TeX-mode ()
+  (setq-default TeX-master nil))
+
+(defun personalize ()
+  "Load custom configuration."
+  (setup-auto-saves-and-bkups)
+  (setup-appearance)
+  (setup-common-key-bindings)
+  (setup-edit-prefs)
+  (setup-TeX-mode))
 
 (personalize)
