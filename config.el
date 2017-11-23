@@ -30,7 +30,7 @@
           (file-name-as-directory "emacs")
           (file-name-as-directory "auto-backups")))
 
-;; ---( auto-save and auto-backup )---
+;; ---( Auto-save and Auto-backup )---
 ;; `__
 
 (defun make-auto-save-file-name ()
