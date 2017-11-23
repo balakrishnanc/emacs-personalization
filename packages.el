@@ -11,10 +11,13 @@
 
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
-(setq personalization-packages
-      '(gnuplot-mode
-        goto-last-change
-        default-text-scale))
+(defconst personalization-packages
+  '(gnuplot-mode
+    goto-last-change
+    default-text-scale
+    all-the-icons
+    neotree
+    doom-themes))
 
 ;; List of packages to exclude.
 (setq personalization-excluded-packages '())
@@ -31,4 +34,25 @@
     :bind ("C-x C-/" . goto-last-change)))
 
 (defun personalization/init-default-text-scale ()
-  nil)
+  (use-package default-text-scale))
+
+(defun personalization/init-all-the-icons ()
+  (use-package all-the-icons))
+
+(defun personalization/init-neotree ()
+  (use-package neotree
+    :config
+    (global-set-key [f8] 'neotree-toggle)
+    (setq neo-theme (if (display-graphic-p) 'icons 'arrow))))
+
+(defun rogue/init-doom-themes ()
+  (use-package doom-themes
+    :config
+    (setq doom-themes-enable-bold t
+          doom-themes-enable-italic t)
+
+    (doom-themes-neotree-config)
+    (setq doom-neotree-enable-variable-pitch t
+          doom-neotree-file-icons 'simple
+          doom-neotree-line-spacing 4)
+    (doom-themes-org-config)))
