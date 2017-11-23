@@ -296,12 +296,12 @@
 (defun setup-appearance ()
   "Customize spacemacs appearance."
 
-  ;; Show line numbers in the left gutter (*always*)
-  ;; (global-linum-mode t)
+  (if window-system
+      (progn
+        (global-prettify-symbols-mode +1)))
 
   ;; Highlight current line.
-  (global-hl-line-mode -1)
-  )
+  (global-hl-line-mode -1))
 
 (defun setup-key-bindings ()
   "Setup additional keybindings to packages."
