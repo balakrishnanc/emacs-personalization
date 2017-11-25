@@ -45,7 +45,7 @@
     (global-set-key [f8] 'neotree-toggle)
     (setq neo-theme (if (display-graphic-p) 'icons 'arrow))))
 
-(defun rogue/init-doom-themes ()
+(defun personalization/init-doom-themes ()
   (use-package doom-themes
     :config
     (setq doom-themes-enable-bold t
