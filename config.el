@@ -19,15 +19,11 @@
   (expand-file-name "~/.emacs.d"))
 
 (defvar auto-saves-dir
-  (concat temporary-file-directory
-          (file-name-as-directory (user-login-name))
-          (file-name-as-directory "emacs")
+  (concat (file-name-as-directory emacs-config-dir)
           (file-name-as-directory "auto-saves")))
 
 (defvar auto-bkups-dir
-  (concat temporary-file-directory
-          (file-name-as-directory (user-login-name))
-          (file-name-as-directory "emacs")
+  (concat (file-name-as-directory emacs-config-dir)
           (file-name-as-directory "auto-backups")))
 
 ;; ---( Auto-save and Auto-backup )---
