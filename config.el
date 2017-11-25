@@ -325,12 +325,65 @@
   ;; Insert timestamp at point.
   (global-set-key '[f5] 'insert-timestamp))
 
+(defun setup-file-templates ()
+  "Setup templates for various files based on extensions."
+  (setq-default auto-insert-directory code-templates-dir)
+  (setq-default auto-insert-alist
+                (loop for i in '("c" "cc" "clj" "cpp" "erl"
+                                 "go" "gpi" "h" "hs" "java"
+                                 "jl" "lisp" "pl" "plot" "py"
+                                 "scala" "scm" "sh" "sql")
+                      collecting (code-template i)))
+  ;; Automatically insert boilerplates.
+  (add-hook 'find-file-hooks 'auto-insert))
+
+(defun customize-org-mode ()
+  "Customize org-mode."
+  (with-eval-after-load 'org
+    (setq org-pretty-entities t
+          org-hide-emphasis-markers t
+          org-hide-leading-stars t
+          org-fontify-whole-heading-line t
+          org-fontify-done-headline t
+          org-fontify-emphasized-text t
+          org-fontify-quote-and-verse-blocks t
+          spaceline-org-clock-p t)))
+
+(defun register-hooks ()
+  "Attach customizations to appropriate hooks."
+  (setup-file-templates)
+  ;; Set execute permissions automatically when saving scripts.
+  (add-hook 'after-save-hook
+            'executable-make-buffer-file-executable-if-script-p)
+
+  ;; To perform full-document previews.
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
+  ;; Customize org mode.
+  (customize-org-mode))
+
+(defun register-new-modes ()
+  "Register new modes."
+  (define-global-minor-mode global-hidden-mode-line-mode
+    hidden-mode-line-mode
+    (lambda () (hidden-mode-line-mode)))
+
+  ;; Hide mode line by default.
+  (global-hidden-mode-line-mode))
+
+(defun enable-utf-8 ()
+  "Use utf-8 everywhere."
+  (prefer-coding-system 'utf-8)
+  (setq locale-coding-system 'utf-8)
+  (setq default-file-name-coding-system 'utf-8)
+  (set-language-environment 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8))
+
 (defun setup-edit-prefs ()
   "Setup editor preferences."
-
-  (set-language-environment "UTF-8")
-  (set-default-coding-systems 'utf-8)
-
+  (enable-utf-8)
   ;; Use '4' spaces instead of a 'tab' character.
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
@@ -345,30 +398,8 @@
   ;;  when cursor is moved past the end of it.
   (setq-default next-line-add-newlines nil)
 
-  ;; Set execute permissions automatically when saving scripts.
-  (add-hook 'after-save-hook
-            'executable-make-buffer-file-executable-if-script-p)
-
-  ;; Automatically insert boilerplates.
-  (add-hook 'find-file-hooks 'auto-insert)
-  (setq-default auto-insert-directory code-templates-dir)
-  (setq-default auto-insert-alist
-        (loop for i in '("c" "cc" "clj" "cpp" "erl"
-                         "go" "gpi" "h" "hs" "java"
-                         "jl" "lisp" "pl" "plot" "py"
-                         "scala" "scm" "sh" "sql")
-              collecting (code-template i)))
-
-  ;; To perform full-document previews.
-  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-
   ;; Show recently opened files in helm.
-  (setq-default helm-ff-file-name-history-use-recentf t)
-
-  (define-global-minor-mode global-hidden-mode-line-mode
-    hidden-mode-line-mode
-    (lambda () (hidden-mode-line-mode)))
-  (global-hidden-mode-line-mode))
+  (setq-default helm-ff-file-name-history-use-recentf t))
 
 ;; ---( Defining behaviors of modes )---
 ;; `__
@@ -379,6 +410,8 @@
   "Load custom configuration."
   (setup-auto-saves-and-bkups)
   (setup-appearance)
+  (register-new-modes)
+  (register-hooks)
   (setup-common-key-bindings)
   (setup-edit-prefs)
   (setup-TeX-mode))
