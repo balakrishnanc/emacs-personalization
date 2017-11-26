@@ -82,6 +82,13 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d %R %z")))
 
+(defun enable-distraction-free-writing ()
+  "Turn off line-wrapping feature."
+  (interactive)
+  (toggle-truncate-lines -1)
+  (visual-line-mode nil)
+  (vi-tilde-fringe-mode -1))
+
 (defun update-file-headers ()
   "Updates the variables in the header."
   (let ((buf-file-name (file-name-nondirectory buffer-file-name))
