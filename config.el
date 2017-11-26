@@ -63,7 +63,9 @@
                 `((".*" ,auto-saves-dir t)))
   (make-dir auto-bkups-dir)
   (setq-default backup-directory-alist
-                `((".*" . ,auto-bkups-dir))))
+                `((".*" . ,auto-bkups-dir)))
+  (ad-activate 'auto-save-mode)
+  (setq auto-save-interval 30))
 
 ;; ---( Utility functions )---
 ;; `__
