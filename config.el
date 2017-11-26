@@ -67,6 +67,13 @@
   (ad-activate 'auto-save-mode)
   (setq auto-save-interval 30))
 
+(defun recover-this-buffer ()
+  "Recover current buffer from auto-save file, if any."
+  (interactive)
+  (if (buffer-file-name)
+      (recover-this-file)
+    (recover-file (buffer-name))))
+
 ;; ---( Utility functions )---
 ;; `__
 
