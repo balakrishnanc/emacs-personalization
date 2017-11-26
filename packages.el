@@ -23,28 +23,11 @@
 ;; List of packages to exclude.
 (setq personalization-excluded-packages '())
 
-(defun personalization/init-gnuplot-mode ()
-  (use-package gnuplot-mode
-    :mode ("\\.gp\\'"
-           "\\.gpi\\'"
-           "\\.plt\\'"
-           "\\.plot\\'")))
-
-(defun personalization/init-goto-last-change ()
-  (use-package goto-last-change
-    :bind ("C-x C-/" . goto-last-change)))
-
-(defun personalization/init-default-text-scale ()
-  (use-package default-text-scale))
-
 (defun personalization/init-all-the-icons ()
   (use-package all-the-icons))
 
-(defun personalization/init-neotree ()
-  (use-package neotree
-    :config
-    (global-set-key [f8] 'neotree-toggle)
-    (setq neo-theme (if (display-graphic-p) 'icons 'arrow))))
+(defun personalization/init-default-text-scale ()
+  (use-package default-text-scale))
 
 (defun personalization/init-doom-themes ()
   (use-package doom-themes
@@ -57,3 +40,20 @@
           doom-neotree-file-icons 'simple
           doom-neotree-line-spacing 4)
     (doom-themes-org-config)))
+
+(defun personalization/init-gnuplot-mode ()
+  (use-package gnuplot-mode
+    :mode ("\\.gp\\'"
+           "\\.gpi\\'"
+           "\\.plt\\'"
+           "\\.plot\\'")))
+
+(defun personalization/init-goto-last-change ()
+  (use-package goto-last-change
+    :bind ("C-x C-/" . goto-last-change)))
+
+(defun personalization/init-neotree ()
+  (use-package neotree
+    :config
+    (global-set-key [f8] 'neotree-toggle)
+    (setq neo-theme (if (display-graphic-p) 'icons 'arrow))))
