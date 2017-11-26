@@ -319,7 +319,10 @@
         (global-prettify-symbols-mode +1)))
 
   ;; Highlight current line.
-  (global-hl-line-mode -1))
+  (global-hl-line-mode -1)
+
+  ;; Increase space between text and the border or fringe.
+  (add-to-list 'default-frame-alist '(internal-border-width . 20)))
 
 (defun setup-common-key-bindings ()
   "Setup additional keybindings to packages."
