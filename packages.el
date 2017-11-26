@@ -18,8 +18,7 @@
     doom-themes
     gnuplot-mode
     goto-last-change
-    neotree
-    org-pretty-table-mode))
+    neotree))
 
 ;; List of packages to exclude.
 (setq personalization-excluded-packages '())
@@ -58,6 +57,3 @@
     :config
     (global-set-key [f8] 'neotree-toggle)
     (setq neo-theme (if (display-graphic-p) 'icons 'arrow))))
-
-(defun personalization/init-pretty-table-mode ()
-  (use-package pretty-table-mode))
