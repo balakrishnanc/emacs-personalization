@@ -348,7 +348,10 @@
   (global-set-key (kbd "C-k") 'kill-and-join-forward)
 
   ;; Insert timestamp at point.
-  (global-set-key '[f5] 'insert-timestamp))
+  (global-set-key '[f5] 'insert-timestamp)
+
+  ;; Recover current buffer.
+  (global-set-key (kbd "C-`") 'recover-this-buffer))
 
 (defun setup-file-templates ()
   "Setup templates for various files based on extensions."
