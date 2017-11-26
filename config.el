@@ -368,14 +368,21 @@
 (defun customize-org-mode ()
   "Customize org-mode."
   (with-eval-after-load 'org
-    (setq org-pretty-entities t
-          org-hide-emphasis-markers t
-          org-hide-leading-stars t
+    (setq ; org-bullets-bullet-list '(" ")
           org-fontify-whole-heading-line t
           org-fontify-done-headline t
           org-fontify-emphasized-text t
           org-fontify-quote-and-verse-blocks t
-          spaceline-org-clock-p t)))
+          org-hide-emphasis-markers t
+          org-hide-leading-stars t
+          org-indent-mode t
+          org-pretty-entities t
+          spaceline-org-clock-p t))
+  (add-hook 'org-mode-hook 'auto-save-mode)
+
+  ;; Wrap around long lines to make the notes easier to read.
+  (add-hook 'org-mode-hook 'enable-distraction-free-writing))
+
 
 (defun register-hooks ()
   "Attach customizations to appropriate hooks."
