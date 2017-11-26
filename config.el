@@ -404,7 +404,8 @@
     (lambda () (hidden-mode-line-mode)))
 
   ;; Hide mode line by default.
-  (global-hidden-mode-line-mode))
+  ;; (global-hidden-mode-line-mode)
+  )
 
 (defun enable-utf-8 ()
   "Use utf-8 everywhere."
