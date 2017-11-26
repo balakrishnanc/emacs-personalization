@@ -48,6 +48,13 @@
   (if (not (file-exists-p dir-path))
       (make-directory dir-path t)))
 
+(defadvice auto-save-mode (around auto-saves-dir)
+  "Use a standard location for auto-save files for non-file buffers."
+  (if (not buffer-file-name)
+      (let ((default-directory auto-saves-dir))
+        ad-do-it)
+    ad-do-it))
+
 (defun setup-auto-saves-and-bkups ()
   "Setup auto-saves and auto-backups."
   (make-dir auto-saves-dir)
