@@ -359,8 +359,6 @@ Deletes whitespace at join."
   (add-hook 'prog-mode-hook
             (lambda ()
               (progn
-                ;; Turn of the `tilde' symbol on the left fringe.
-                (vi-tilde-fringe-mode -1)
                 ;; Turn off line-truncation; wrapping is bad for source code.
                 (toggle-truncate-lines -1))))
 
