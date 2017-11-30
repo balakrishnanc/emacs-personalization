@@ -165,14 +165,12 @@ Deletes whitespace at join."
 (defun enable-distraction-free-writing ()
   "Enable distraction-free writing."
   (toggle-truncate-lines -1)
-  (visual-line-mode nil)
-  (vi-tilde-fringe-mode -1))
+  (visual-line-mode nil))
 
 (defun disable-distraction-free-writing ()
   "Disable distraction-free writing."
   (toggle-truncate-lines 1)
-  (visual-line-mode 1)
-  (vi-tilde-fringe-mode 1))
+  (visual-line-mode 1))
 
 (defun toggle-distraction-free-writing ()
   "Toggle distraction-free writing."

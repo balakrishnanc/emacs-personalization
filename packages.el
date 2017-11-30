@@ -35,7 +35,8 @@
     gnuplot-mode
     goto-last-change
     neotree
-    pretty-mode))
+    pretty-mode
+    vi-tilde-fringe))
 
 (defun personalization/init-all-the-icons ()
   (use-package all-the-icons))
@@ -81,6 +82,10 @@
 (defun personalization/init-pretty-mode ()
   (use-package pretty-mode
     :config (global-pretty-mode t)))
+
+(defun personalization/post-init-vi-tilde-fringe ()
+  (use-package vi-tilde-fringe
+    :config (global-vi-tilde-fringe-mode -1)))
 
 
 ;;; packages.el ends here
