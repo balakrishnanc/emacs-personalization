@@ -382,31 +382,46 @@ Deletes whitespace at join."
        org-fontify-done-headline t
        org-fontify-emphasized-text t
        org-fontify-quote-and-verse-blocks t
+       org-src-fontify-natively t
        org-hide-emphasis-markers t
        org-hide-leading-stars t
        org-indent-mode t
        org-pretty-entities t
-       org-startup-indented t
+       ;; org-startup-indented t
        spaceline-org-clock-p t)
 
-      (let* ((heading-font `(:font ,org-mode-header-font))
-             (heading-attrs `(:inherit default :weight bold)))
+      (let* ((heading-font    `(:font ,org-mode-serif-font))
+             (heading-attrs   `(:inherit default :weight bold))
+             (monospace-font  `(:font ,org-mode-monospace-font))
+             (monospace-attrs `(:inherit default)))
 
         (custom-theme-set-faces
          'user
-         `(org-level-8 ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-7 ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-6 ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-5 ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-4 ((t (,@heading-attrs ,@heading-font :height 1.1))))
-         `(org-level-3 ((t (,@heading-attrs ,@heading-font :height 1.25))))
-         `(org-level-2 ((t (,@heading-attrs ,@heading-font :height 1.5))))
-         `(org-level-1 ((t (,@heading-attrs ,@heading-font :height 1.75))))
+         `(org-level-8   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-7   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-6   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-5   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.1))))
+         `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.25))))
+         `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.5))))
+         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.75))))
+         `(org-code      ((t (,@monospace-attrs ,@monospace-font))))
+         `(org-block     ((t (,@monospace-attrs ,@monospace-font))))
+         `(org-verbatim  ((t (,@monospace-attrs ,@monospace-font))))
+         `(org-table     ((t (,@monospace-attrs ,@monospace-font))))
          `(org-document-title
            ((t (,@heading-attrs ,@heading-font
                                 :height 1.5 :underline nil))))))))
 
+  ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
   (add-hook 'org-mode-hook 'auto-save-mode)
+
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (progn
+                (setq buffer-face-mode-face `(:family ,org-mode-serif-font))
+                (buffer-face-mode))))
+
   (add-hook 'org-mode-hook
             (lambda ()
               (when (not distraction-free-modep)

@@ -47,9 +47,13 @@
 (defvar distraction-free-modep nil
   "Flag indicating if `distraction-free mode' is enabled.")
 
-(defvar org-mode-header-font "iA Writer Duospace"
-  "Flag indicating if `distraction-free mode' is enabled.
-Check `font-name' with function `can-use-font?' to avoid errors.")
+(defvar org-mode-serif-font "iA Writer Duospace"
+  "Default _serif_ font family for `org-mode'.
+Check the font name with function `can-use-font?' to avoid errors.")
+
+(defvar org-mode-monospace-font "Fira Code"
+  "Default _monospace_ font family for `org-mode'.
+Check the font name with function `can-use-font?' to avoid errors.")
 
 
 ;; --- Run all customizations. ---
