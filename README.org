@@ -1,0 +1,23 @@
+#+TITLE: Personalization Layer
+
+* Description
+  A Spacemacs layer containing chock-full of customizations.
+
+* Install
+  To use this configuration layer, add it to your =~/.spacemacs=. You will need to
+  add =personalization= to the existing =dotspacemacs-configuration-layers= list in this
+  file.
+
+* Key bindings
+
+  | Key Binding | Description                                    |
+  |-------------+------------------------------------------------|
+  | ~C-'~         | ~fill-region~                                    |
+  | ~C-M-'~       | ~align-regexp~                                   |
+  | ~C-M-]~       | ~comment-region~                                 |
+  | ~C-M-[~       | ~uncomment-region~                               |
+  | ~C-k~         | Kill line, slurp whitespace, and join forward. |
+  | ~[f5]~        | Insert timestamp at point.                     |
+  | ~C-`~         | Recover the file-visiting or non-file buffer.  |
+  | ~[f12]~       | Toggle distraction-free writing mode.          |
+  
