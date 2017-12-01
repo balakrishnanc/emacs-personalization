@@ -435,11 +435,25 @@ Deletes whitespace at join."
   ;; Perform full-document previews.
   (add-hook 'doc-view-mode-hook 'auto-revert-mode))
 
+(defun setup-text-mode ()
+  "Customize `text-mode'."
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (progn
+                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (buffer-face-mode))))
+
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (when (not distraction-free-modep)
+                (toggle-distraction-free-writing)))))
+
 (defun customize-modes ()
   "Customize different modes."
   (setup-programming-mode)
   (setup-org-mode)
-  (setup-latex-mode))
+  (setup-latex-mode)
+  (setup-text-mode))
 
 
 ;; --- Common editor preferences. ---
