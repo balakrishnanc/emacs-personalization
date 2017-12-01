@@ -47,12 +47,12 @@
 (defvar distraction-free-modep nil
   "Flag indicating if `distraction-free mode' is enabled.")
 
-(defvar org-mode-serif-font "iA Writer Duospace"
-  "Default _serif_ font family for `org-mode'.
+(defvar serif-font-face "iA Writer Duospace"
+  "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
-(defvar org-mode-monospace-font "Fira Code"
-  "Default _monospace_ font family for `org-mode'.
+(defvar monospace-font-face "Fira Code"
+  "Default _monospace_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
 

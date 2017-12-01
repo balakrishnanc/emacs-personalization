@@ -390,9 +390,9 @@ Deletes whitespace at join."
        ;; org-startup-indented t
        spaceline-org-clock-p t)
 
-      (let* ((heading-font    `(:font ,org-mode-serif-font))
+      (let* ((heading-font    `(:font ,serif-font-face))
              (heading-attrs   `(:inherit default :weight bold))
-             (monospace-font  `(:font ,org-mode-monospace-font))
+             (monospace-font  `(:font ,monospace-font-face))
              (monospace-attrs `(:inherit default)))
 
         (custom-theme-set-faces
@@ -419,7 +419,7 @@ Deletes whitespace at join."
   (add-hook 'org-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,org-mode-serif-font))
+                (setq buffer-face-mode-face `(:family ,serif-font-face))
                 (buffer-face-mode))))
 
   (add-hook 'org-mode-hook
