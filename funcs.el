@@ -430,12 +430,7 @@ Deletes whitespace at join."
             (lambda ()
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face))
-                (buffer-face-mode))))
-
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (when (not distraction-free-modep)
-                  (toggle-distraction-free-writing)))))
+                (buffer-face-mode)))))
 
 (defun setup-latex-mode ()
   "Customize `latex-mode'."
