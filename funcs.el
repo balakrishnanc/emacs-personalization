@@ -440,6 +440,14 @@ Deletes whitespace at join."
   ;; Perform full-document previews.
   (add-hook 'doc-view-mode-hook 'auto-revert-mode))
 
+(defun setup-markdown-mode ()
+  "Customize `markdown-mode'."
+  (add-hook 'markdown-mode-hook
+            (lambda ()
+              (progn
+                (setq markdown-fontify-code-blocks-natively t
+                      markdown-hide-markup t)))))
+
 (defun setup-text-mode ()
   "Customize `text-mode'."
   (add-hook 'text-mode-hook
@@ -453,6 +461,7 @@ Deletes whitespace at join."
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
+  (setup-markdown-mode)
   (setup-text-mode))
 
 
