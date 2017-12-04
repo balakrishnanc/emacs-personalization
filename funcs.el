@@ -446,12 +446,7 @@ Deletes whitespace at join."
             (lambda ()
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face))
-                (buffer-face-mode))))
-
-  (add-hook 'text-mode-hook
-            (lambda ()
-              (when (not distraction-free-modep)
-                (toggle-distraction-free-writing)))))
+                (buffer-face-mode)))))
 
 (defun customize-modes ()
   "Customize different modes."
