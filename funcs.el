@@ -162,36 +162,33 @@ Deletes whitespace at join."
 ;; --- Distraction free writing. ---
 ;; --------------------------------------------------
 
-(defun enable-distraction-free-writing ()
-  "Enable distraction-free writing."
-  (progn
-    (when truncate-lines
-      (toggle-truncate-lines -1))
-    (when (not word-wrap)
-      (toggle-word-wrap))
-    (visual-line-mode -1)
-    (message "distraction-free-writing mode enabled.")))
-
 (defun disable-distraction-free-writing ()
-  "Disable distraction-free writing."
+  "Disable distraction-free-writing mode."
   (progn
-    (when (not truncate-lines)
-      (toggle-truncate-lines 1))
-    (when word-wrap
-      (toggle-word-wrap))
-    (visual-line-mode 1)
-    (message "distraction-free-writing mode disabled.")))
+    ;; Disable visual line mode.
+    (visual-line-mode -1)
+    ;; NOTE: `visual-line-mode' affects `truncate-lines' and `word-wrap'.
+    ;; Enable `truncate-lines' feature.
+    (toggle-truncate-lines 1)
+    (message "distraction-free-writing mode disabled.")
+    (put 'toggle-distraction-free-writing 'state nil)))
 
-(defun toggle-distraction-free-writing ()
+(defun enable-distraction-free-writing ()
+  "Enable distraction-free-writing mode."
+  (progn
+    ;; Enable visual line mode.
+    (visual-line-mode 1)
+    ;; Disable `truncate-lines' feature.
+    (toggle-truncate-lines -1)
+    (message "distraction-free-writing mode enabled.")
+    (put 'toggle-distraction-free-writing 'state t)))
+
+(defun toggle-distraction-free-writing (&optional arg)
   "Toggle distraction-free writing."
-  (interactive)
-  (if distraction-free-modep
-      (progn
-        (disable-distraction-free-writing)
-        (setq distraction-free-modep nil))
-    (progn
-      (enable-distraction-free-writing)
-      (setq distraction-free-modep t))))
+  (interactive "p")
+  (if (get 'toggle-distraction-free-writing 'state)
+      (disable-distraction-free-writing)
+    (enable-distraction-free-writing)))
 
 
 ;; --- Customize look and feel. ---

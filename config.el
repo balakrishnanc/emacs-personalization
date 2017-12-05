@@ -44,9 +44,6 @@
 (defvar auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defvar distraction-free-modep nil
-  "Flag indicating if `distraction-free mode' is enabled.")
-
 (defvar serif-font-face "iA Writer Duospace"
   "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
