@@ -393,6 +393,7 @@ Deletes whitespace at join."
        org-hide-leading-stars t
        org-indent-mode t
        org-pretty-entities t
+       org-use-sub-superscripts "{}"
        ;; org-startup-indented t
        spaceline-org-clock-p t)
 
