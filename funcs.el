@@ -365,9 +365,8 @@ Deletes whitespace at join."
   ;; Tack on customizations to the `prog-mode-hook'.
   (add-hook 'prog-mode-hook
             (lambda ()
-              (progn
-                ;; Turn off line-truncation; wrap lines around.
-                (toggle-truncate-lines -1))))
+              ;; Turn off line-truncation; wrap lines around.
+              (toggle-truncate-lines -1)))
 
   ;; Set execute permissions automatically when saving scripts.
   (add-hook 'after-save-hook
