@@ -459,8 +459,8 @@ Deletes whitespace at join."
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
-  (setup-markdown-mode)
-  (setup-text-mode))
+  ;; (setup-text-mode)
+  (setup-markdown-mode))
 
 
 ;; --- Common editor preferences. ---
