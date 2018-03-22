@@ -451,8 +451,9 @@ Deletes whitespace at join."
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
-                (setq markdown-fontify-code-blocks-natively t
-                      markdown-hide-markup t)))))
+                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (buffer-face-mode)
+                (enable-distraction-free-writing)))))
 
 (defun setup-text-mode ()
   "Customize `text-mode'."
@@ -460,14 +461,15 @@ Deletes whitespace at join."
             (lambda ()
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face))
-                (buffer-face-mode)))))
+                (buffer-face-mode)
+                (enable-distraction-free-writing)))))
 
 (defun customize-modes ()
   "Customize different modes."
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
-  ;; (setup-text-mode)
+  (setup-text-mode)
   (setup-markdown-mode))
 
 
