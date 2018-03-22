@@ -170,7 +170,10 @@ Deletes whitespace at join."
     ;; NOTE: `visual-line-mode' affects `truncate-lines' and `word-wrap'.
     ;; Enable `truncate-lines' feature.
     (toggle-truncate-lines 1)
+    ;; Disable centered cursor mode.
     (centered-cursor-mode -1)
+    ;; Show mode line.
+    (hidden-mode-line-mode -1)
     (message "distraction-free-writing mode disabled.")
     (put 'toggle-distraction-free-writing 'state nil)))
 
@@ -181,7 +184,10 @@ Deletes whitespace at join."
     (visual-line-mode 1)
     ;; Disable `truncate-lines' feature.
     (toggle-truncate-lines -1)
+    ;; Keep text being edited in the center of the screen.
     (centered-cursor-mode 1)
+    ;; Hide mode line.
+    (hidden-mode-line-mode 1)
     (message "distraction-free-writing mode enabled.")
     (put 'toggle-distraction-free-writing 'state t)))
 
