@@ -341,6 +341,8 @@ Deletes whitespace at join."
   "Customize common editor behavior."
   (use-utf-8-everywhere)
 
+  (setup-auto-saves-and-bkups)
+
   ;; Use '4' spaces instead of a 'tab' character.
   (setq-default tab-width 4)
   (setq-default indent-tabs-mode nil)
