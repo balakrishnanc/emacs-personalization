@@ -329,13 +329,8 @@ Deletes whitespace at join."
 
 (defun use-utf-8-everywhere ()
   "Use utf-8 everywhere."
-  (setq locale-coding-system 'utf-8)
-  (setq default-file-name-coding-system 'utf-8)
-  (prefer-coding-system 'utf-8)
   (set-language-environment 'utf-8)
-  (set-default-coding-systems 'utf-8)
-  (set-terminal-coding-system 'utf-8)
-  (set-keyboard-coding-system 'utf-8))
+  (set-default-coding-systems 'utf-8))
 
 (defun customize-editor-behavior ()
   "Customize common editor behavior."
