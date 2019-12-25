@@ -294,6 +294,13 @@ Deletes whitespace at join."
   (with-eval-after-load 'latex
     (setq-default TeX-master nil))
 
+  (add-hook 'LaTeX-mode-hook
+            (lambda ()
+              (progn
+                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (buffer-face-mode)
+                (enable-distraction-free-writing))))
+
   ;; Perform full-document previews.
   (add-hook 'doc-view-mode-hook 'auto-revert-mode))
 
