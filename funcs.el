@@ -69,10 +69,10 @@
   "Setup boilerplates for various files based on extensions."
   (setq-default auto-insert-directory code-templates-dir)
   (setq-default auto-insert-alist
-                (loop for i in '("c" "cc" "clj" "cpp" "erl"
-                                 "go" "gpi" "h" "hs" "java"
-                                 "jl" "lisp" "pl" "plot" "py"
-                                 "scala" "scm" "sh" "sql")
+                (cl-loop for i in '("c" "cc" "clj" "cpp" "erl"
+                                   "go" "gpi" "h" "hs" "java"
+                                   "jl" "lisp" "pl" "plot" "py"
+                                   "scala" "scm" "sh" "sql")
                       collecting (code-template i)))
   ;; Automatically insert boilerplates.
   (add-hook 'find-file-hooks 'auto-insert))
