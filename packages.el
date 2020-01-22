@@ -34,6 +34,7 @@
     doom-themes
     gnuplot-mode
     goto-last-change
+    helm-projectile
     neotree
     pretty-mode
     vi-tilde-fringe))
@@ -73,6 +74,19 @@
 (defun personalization/init-goto-last-change ()
   (use-package goto-last-change
     :bind ("C-x C-/" . goto-last-change)))
+
+(defun personalization/init-helm-projectile ()
+  (use-package helm-projectile
+    :ensure t
+    :init (helm-projectile-on)
+    :config (progn
+              (setq projectile-switch-project-action 'helm-projectile)
+              (defvar helm-source-file-not-found
+                (helm-build-dummy-source
+                    "Create file"
+                  :action 'find-file))
+              (add-to-list 'helm-projectile-sources-list
+                           helm-source-file-not-found t))))
 
 (defun personalization/post-init-neotree ()
   (use-package neotree
