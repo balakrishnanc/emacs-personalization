@@ -28,19 +28,14 @@
 ;;; Code:
 
 (defconst personalization-packages
-  '(all-the-icons
-    avy
+  '(avy
     default-text-scale
     doom-themes
     gnuplot-mode
     goto-last-change
-    helm-projectile
     neotree
     pretty-mode
     vi-tilde-fringe))
-
-(defun personalization/init-all-the-icons ()
-  (use-package all-the-icons))
 
 (defun personalization/post-init-avy ()
   (use-package avy
