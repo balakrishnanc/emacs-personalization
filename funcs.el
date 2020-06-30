@@ -311,6 +311,7 @@ Deletes whitespace at join."
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face))
                 (buffer-face-mode)
+                (typo-mode -1)
                 (enable-distraction-free-writing)))))
 
 (defun setup-text-mode ()
