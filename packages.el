@@ -28,14 +28,19 @@
 ;;; Code:
 
 (defconst personalization-packages
-  '(avy
+  '(all-the-icons
+    avy
     default-text-scale
     doom-themes
     gnuplot-mode
     goto-last-change
+    helm-projectile
     neotree
     pretty-mode
     vi-tilde-fringe))
+
+(defun personalization/post-init-all-the-icons ()
+  (use-package all-the-icons))
 
 (defun personalization/post-init-avy ()
   (use-package avy
@@ -70,7 +75,7 @@
   (use-package goto-last-change
     :bind ("C-x C-/" . goto-last-change)))
 
-(defun personalization/init-helm-projectile ()
+(defun personalization/post-init-helm-projectile ()
   (use-package helm-projectile
     :ensure t
     :init (helm-projectile-on)
