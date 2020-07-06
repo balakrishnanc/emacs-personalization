@@ -251,13 +251,12 @@ Deletes whitespace at join."
        org-hide-emphasis-markers t
        org-hide-leading-stars t
        org-indent-mode t
-       org-pretty-entities t
+       org-pretty-entities nil
        org-use-sub-superscripts "{}"
-       ;; org-startup-indented t
        spaceline-org-clock-p t)
 
       (let* ((heading-font    `(:font ,serif-font-face))
-             (heading-attrs   `(:inherit default :weight bold))
+             (heading-attrs   `(:inherit default :weight normal :height 1.0))
              (monospace-font  `(:font ,monospace-font-face))
              (monospace-attrs `(:inherit default)))
 
@@ -267,17 +266,17 @@ Deletes whitespace at join."
          `(org-level-7   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-6   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-5   ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.1))))
-         `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.25))))
-         `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.5))))
-         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.75))))
+         `(org-level-4   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-3   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-2   ((t (,@heading-attrs ,@heading-font))))
+         `(org-level-1   ((t (,@heading-attrs ,@heading-font))))
          `(org-code      ((t (,@monospace-attrs ,@monospace-font))))
          `(org-block     ((t (,@monospace-attrs ,@monospace-font))))
          `(org-verbatim  ((t (,@monospace-attrs ,@monospace-font))))
          `(org-table     ((t (,@monospace-attrs ,@monospace-font))))
          `(org-document-title
            ((t (,@heading-attrs ,@heading-font
-                                :height 1.5 :underline nil))))))))
+                                :height 1.25 :underline nil))))))))
 
   ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
   (add-hook 'org-mode-hook 'auto-save-mode)
@@ -285,7 +284,9 @@ Deletes whitespace at join."
   (add-hook 'org-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (setq buffer-face-mode-face `(:family ,serif-font-face
+                                                      :height 1.0
+                                                      :weight light))
                 (buffer-face-mode)
                 (enable-distraction-free-writing)))))
 
