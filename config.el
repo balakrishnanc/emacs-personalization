@@ -48,7 +48,7 @@
 (defvar auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defvar serif-font-face "Literata"
+(defvar serif-font-face "Literata" ; "ETBembo"
   "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
