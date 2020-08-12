@@ -216,6 +216,17 @@ Deletes whitespace at join."
 ;; --- Customize modes.
 ;; --------------------------------------------------
 
+(defun setup-lisp-mode ()
+  "Customize `lisp-mode'."
+  (add-hook 'lisp-mode-hook
+            (lambda ()
+              (progn
+                (let ((slime-config (concat (file-name-as-directory ext-config-dir)
+                                            (file-name-as-directory "quicklisp")
+                                            "slime-helper.el")))
+                  (when (file-exists-p slime-config)
+                    (load slime-config)))))))
+
 (defun setup-programming-mode ()
   "Add customizations to setup a development environment."
   ;; Turn on support for boilerplates.
@@ -229,7 +240,8 @@ Deletes whitespace at join."
 
   ;; Set execute permissions automatically when saving scripts.
   (add-hook 'after-save-hook
-            'executable-make-buffer-file-executable-if-script-p))
+            'executable-make-buffer-file-executable-if-script-p)
+  (setup-lisp-mode))
 
 (defun can-use-font? (font-name)
   "Returns 't' only if emacs can recognize the font face."
