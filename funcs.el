@@ -317,6 +317,15 @@ Deletes whitespace at join."
   ;; Perform full-document previews.
   (add-hook 'doc-view-mode-hook 'auto-revert-mode))
 
+(defun setup-text-mode ()
+  "Customize `text-mode'."
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (progn
+                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (buffer-face-mode)
+                (enable-distraction-free-writing)))))
+
 (defun setup-markdown-mode ()
   "Customize `markdown-mode'."
   (add-hook 'markdown-mode-hook
@@ -325,15 +334,6 @@ Deletes whitespace at join."
                 (setq buffer-face-mode-face `(:family ,serif-font-face))
                 (buffer-face-mode)
                 (typo-mode -1)
-                (enable-distraction-free-writing)))))
-
-(defun setup-text-mode ()
-  "Customize `text-mode'."
-  (add-hook 'text-mode-hook
-            (lambda ()
-              (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face))
-                (buffer-face-mode)
                 (enable-distraction-free-writing)))))
 
 (defun customize-modes ()
