@@ -254,7 +254,6 @@ Deletes whitespace at join."
   (with-eval-after-load 'org
     (progn
       (setq
-       ;; org-bullets-bullet-list '(" ")
        org-fontify-whole-heading-line t
        org-fontify-done-headline t
        org-fontify-emphasized-text t
@@ -263,43 +262,59 @@ Deletes whitespace at join."
        org-hide-emphasis-markers t
        org-hide-leading-stars t
        org-indent-mode t
-       org-pretty-entities nil
+       org-pretty-entities t
        org-use-sub-superscripts "{}"
+       org-startup-indented t
        spaceline-org-clock-p t)
 
-      (let* ((heading-font    `(:font ,serif-font-face))
-             (heading-attrs   `(:inherit default :weight normal :height 1.0))
-             (monospace-font  `(:font ,monospace-font-face))
-             (monospace-attrs `(:inherit default)))
+      (let* ((base-font-color (face-foreground 'default nil 'default))
+             (heading-font    `(:font ,serif-font-face))
+             (heading-attrs   `(:inherit default
+                                         :weight bold
+                                         :foreground ,base-font-color)))
 
         (custom-theme-set-faces
          'user
+         `(variable-pitch ((t (:family ,serif-font-face
+                                       :height 150
+                                       :weight thin))))
+         `(fixed-pitch ((t (:family ,monospace-font-face
+                                    :slant normal
+                                    :height 140))))
+         `(org-block     ((t (:inherit fixed-pitch))))
+         `(org-code     ((t (:inherit (shadow fixed-pitch)))))
+         '(org-document-info ((t (:foreground "#fb5607"))))
+         '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+         '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+         '(org-link ((t (:foreground "#3a86ff" :underline t))))
+         '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+         '(org-property-value ((t (:inherit fixed-pitch))) t)
+         '(org-special-keyword ((t (:inherit (font-lock-comment-face
+                                              fixed-pitch)))))
+         '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+         '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+         '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
+         `(org-document-title
+           ((t (,@heading-attrs ,@heading-font
+                                :height 1.6 :underline nil))))
          `(org-level-8   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-7   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-6   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-5   ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-4   ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-3   ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-2   ((t (,@heading-attrs ,@heading-font))))
-         `(org-level-1   ((t (,@heading-attrs ,@heading-font))))
-         `(org-code      ((t (,@monospace-attrs ,@monospace-font))))
-         `(org-block     ((t (,@monospace-attrs ,@monospace-font))))
-         `(org-verbatim  ((t (,@monospace-attrs ,@monospace-font))))
-         `(org-table     ((t (,@monospace-attrs ,@monospace-font))))
-         `(org-document-title
-           ((t (,@heading-attrs ,@heading-font
-                                :height 1.25 :underline nil))))))))
+         `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.1))))
+         `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.2))))
+         `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.3))))
+         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.4))))))))
 
   ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
   (add-hook 'org-mode-hook 'auto-save-mode)
 
+  ;; Turn on `variable-pitch-mode' for customizing look and feel.
+  (add-hook 'org-mode-hook 'variable-pitch-mode)
+
   (add-hook 'org-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face
-                                                      :height 1.0
-                                                      :weight light))
-                (buffer-face-mode)
                 (enable-distraction-free-writing)))))
 
 (defun setup-latex-mode ()
