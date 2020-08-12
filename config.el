@@ -19,6 +19,10 @@
   (expand-file-name "~/.code_templates")
   "Path to directory containing boilerplates.")
 
+(defvar ext-config-dir
+  (expand-file-name "~/.config")
+  "Path to directory containing configurations for tools and utilities.")
+
 (defvar proj-name-placeholder "__PROJECT__"
   "String denoting the location of project name in boilerplates.")
 
