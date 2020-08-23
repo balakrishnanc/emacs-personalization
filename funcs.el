@@ -363,6 +363,22 @@ Deletes whitespace at join."
 ;; --- Common editor preferences. ---
 ;; --------------------------------------------------
 
+(defun handle-delete-frame-without-kill-emacs (event)
+  "Handle delete-frame events from the X server."
+  (interactive "e")
+  (let ((frame (posn-window (event-start event)))
+        (i 0)
+        (tail (frame-list)))
+    (while tail
+      (and (frame-visible-p (car tail))
+           (not (eq (car tail) frame))
+           (setq i (1+ i)))
+      (setq tail (cdr tail)))
+    (if (> i 0)
+        (delete-frame frame t)
+      ;; Not (save-buffers-kill-emacs) but instead:
+      (ns-do-hide-emacs))))
+
 (defun use-utf-8-everywhere ()
   "Use utf-8 everywhere."
   (set-language-environment 'utf-8)
@@ -389,7 +405,11 @@ Deletes whitespace at join."
   (setq-default next-line-add-newlines nil)
 
   ;; Show recently opened files in helm.
-  (setq-default helm-ff-file-name-history-use-recentf t))
+  (setq-default helm-ff-file-name-history-use-recentf t)
+
+  (when (eq system-type 'darwin)
+    (advice-add 'handle-delete-frame :override
+                #'handle-delete-frame-without-kill-emacs)))
 
 
 ;;; funcs.el ends here
