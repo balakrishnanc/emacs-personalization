@@ -276,11 +276,11 @@ Deletes whitespace at join."
         (custom-theme-set-faces
          'user
          `(variable-pitch ((t (:family ,serif-font-face
-                                       :height 150
+                                       :height 180
                                        :weight thin))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
-                                    :height 130))))
+                                    :height 125))))
          `(org-block     ((t (:inherit fixed-pitch))))
          `(org-code     ((t (:inherit (shadow fixed-pitch)))))
          '(org-document-info ((t (:foreground "#fb5607"))))
