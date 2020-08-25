@@ -276,7 +276,7 @@ Deletes whitespace at join."
         (custom-theme-set-faces
          'user
          `(variable-pitch ((t (:family ,serif-font-face
-                                       :height 180
+                                       :height 160
                                        :weight thin))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
@@ -296,7 +296,7 @@ Deletes whitespace at join."
          '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
          `(org-document-title
            ((t (,@heading-attrs ,@heading-font
-                                :height 1.6 :underline nil))))
+                                :height 1.5 :underline nil))))
          `(org-level-8   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-7   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-6   ((t (,@heading-attrs ,@heading-font))))
