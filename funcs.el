@@ -267,6 +267,20 @@ Deletes whitespace at join."
        org-startup-indented t
        spaceline-org-clock-p t)
 
+      ;; Setup custom bullets markers.
+      (font-lock-add-keywords 'org-mode
+                              '(("^ *\\([+]\\) "
+                                 (0 (prog1 ()
+                                      (compose-region (match-beginning 1)
+                                                      (match-end 1)
+                                                      "●"))))))
+      (font-lock-add-keywords 'org-mode
+                              '(("^ *\\([-]\\) "
+                                 (0 (prog1 ()
+                                      (compose-region (match-beginning 1)
+                                                      (match-end 1)
+                                                      "○"))))))
+
       (let* ((base-font-color (face-foreground 'default nil 'default))
              (heading-font    `(:font ,serif-font-face))
              (heading-attrs   `(:inherit default

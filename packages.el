@@ -36,7 +36,6 @@
     goto-last-change
     helm-projectile
     neotree
-    org-bullets
     pretty-mode
     vi-tilde-fringe))
 
@@ -75,10 +74,6 @@
 (defun personalization/init-goto-last-change ()
   (use-package goto-last-change
     :bind ("C-x C-/" . goto-last-change)))
-
-(defun personalization/init-org-bullets ()
-  (use-package org-bullets
-    :hook (org-mode . org-bullets-mode)))
 
 (defun personalization/post-init-helm-projectile ()
   (use-package helm-projectile
