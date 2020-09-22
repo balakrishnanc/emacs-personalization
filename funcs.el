@@ -290,8 +290,7 @@ Deletes whitespace at join."
       (let* ((base-font-color (face-foreground 'default nil 'default))
              (heading-font    `(:font ,serif-font-face))
              (heading-attrs   `(:inherit default
-                                         :weight bold
-                                         :foreground ,base-font-color)))
+                                         :weight bold)))
 
         (custom-theme-set-faces
          'user
