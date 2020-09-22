@@ -149,7 +149,13 @@ Deletes whitespace at join."
   (setq-default backup-directory-alist
                 `((".*" . ,auto-bkups-dir)))
   (ad-activate 'auto-save-mode)
-  (setq auto-save-interval 30))
+  (setq auto-save-interval 30)
+
+  ;; Save when focus is lost.
+  (add-hook 'focus-out-hook
+            (defun save-all-unsaved-buffers ()
+              (interactive)
+              (save-some-buffers t))))
 
 (defun recover-this-buffer ()
   "Recover current buffer from auto-save file, if any."
