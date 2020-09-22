@@ -35,7 +35,6 @@
     gnuplot-mode
     goto-last-change
     helm-projectile
-    neotree
     pretty-mode
     vi-tilde-fringe))
 
@@ -87,11 +86,6 @@
                   :action 'find-file))
               (add-to-list 'helm-projectile-sources-list
                            helm-source-file-not-found t))))
-
-(defun personalization/post-init-neotree ()
-  (use-package neotree
-    :bind ([f8] . neotree-toggle)
-    :config (setq neo-theme (if (display-graphic-p) 'icons 'arrow))))
 
 (defun personalization/init-pretty-mode ()
   (use-package pretty-mode
