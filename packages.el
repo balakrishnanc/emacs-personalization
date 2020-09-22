@@ -57,7 +57,6 @@
     :config (progn
               (setq doom-themes-enable-bold t
                     doom-themes-enable-italic t)
-              (doom-themes-neotree-config)
               (setq doom-neotree-enable-variable-pitch t
                     doom-neotree-file-icons 'simple
                     doom-neotree-line-spacing 4)
