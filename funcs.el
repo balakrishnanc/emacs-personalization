@@ -296,7 +296,7 @@ Deletes whitespace at join."
          'user
          `(variable-pitch ((t (:family ,serif-font-face
                                        :height 160
-                                       :weight thin))))
+                                       :weight normal))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
                                     :height 125))))
