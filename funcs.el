@@ -281,10 +281,10 @@ Deletes whitespace at join."
          'user
          `(variable-pitch ((t (:family ,serif-font-face
                                        :height 160
-                                       :weight normal))))
+                                       :weight thin))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
-                                    :height 125))))
+                                    :height 120))))
          `(org-block     ((t (:inherit fixed-pitch))))
          `(org-code     ((t (:inherit (shadow fixed-pitch)))))
          '(org-document-info ((t (:foreground "#fb5607"))))
@@ -300,7 +300,7 @@ Deletes whitespace at join."
          '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
          `(org-document-title
            ((t (,@heading-attrs ,@heading-font
-                                :height 1.5 :underline nil))))
+                                :height 1.5 :underline t))))
          `(org-level-8   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-7   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-6   ((t (,@heading-attrs ,@heading-font))))
@@ -308,7 +308,26 @@ Deletes whitespace at join."
          `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.1))))
          `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.2))))
          `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.3))))
-         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.4))))))))
+         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.4)))))))
+
+(defun setup-org-mode ()
+  "Customize `org-mode'."
+  (with-eval-after-load 'org
+    (progn
+      (setq
+       org-fontify-whole-heading-line t
+       org-fontify-done-headline t
+       org-fontify-emphasized-text t
+       org-fontify-quote-and-verse-blocks t
+       org-src-fontify-natively t
+       org-hide-emphasis-markers t
+       org-hide-leading-stars t
+       org-indent-mode t
+       org-pretty-entities t
+       org-use-sub-superscripts "{}"
+       org-startup-indented t
+       spaceline-org-clock-p t)
+      (fmt-org-mode-style)))
 
   ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
   (add-hook 'org-mode-hook 'auto-save-mode)
