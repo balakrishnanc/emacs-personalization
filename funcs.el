@@ -255,39 +255,24 @@ Deletes whitespace at join."
       t
     nil))
 
-(defun setup-org-mode ()
-  "Customize `org-mode'."
-  (with-eval-after-load 'org
-    (progn
-      (setq
-       org-fontify-whole-heading-line t
-       org-fontify-done-headline t
-       org-fontify-emphasized-text t
-       org-fontify-quote-and-verse-blocks t
-       org-src-fontify-natively t
-       org-hide-emphasis-markers t
-       org-hide-leading-stars t
-       org-indent-mode t
-       org-pretty-entities t
-       org-use-sub-superscripts "{}"
-       org-startup-indented t
-       spaceline-org-clock-p t)
+(defun fmt-org-bullets ()
+  "Customize bullets in `org-mode'"
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([+]\\) "
+                             (0 (prog1 ()
+                                  (compose-region (match-beginning 1)
+                                                  (match-end 1)
+                                                  "●"))))))
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 ()
+                                  (compose-region (match-beginning 1)
+                                                  (match-end 1)
+                                                  "○")))))))
 
-      ;; Setup custom bullets markers.
-      (font-lock-add-keywords 'org-mode
-                              '(("^ *\\([+]\\) "
-                                 (0 (prog1 ()
-                                      (compose-region (match-beginning 1)
-                                                      (match-end 1)
-                                                      "●"))))))
-      (font-lock-add-keywords 'org-mode
-                              '(("^ *\\([-]\\) "
-                                 (0 (prog1 ()
-                                      (compose-region (match-beginning 1)
-                                                      (match-end 1)
-                                                      "○"))))))
-
-      (let* ((base-font-color (face-foreground 'default nil 'default))
+(defun fmt-org-mode-style ()
+  "Customize `org-mode' look and feel."
+  (let* ((base-font-color (face-foreground 'default nil 'default))
              (heading-font    `(:font ,serif-font-face))
              (heading-attrs   `(:inherit default
                                          :weight bold)))
