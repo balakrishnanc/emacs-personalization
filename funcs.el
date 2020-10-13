@@ -348,7 +348,9 @@ Deletes whitespace at join."
   (add-hook 'LaTeX-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (setq buffer-face-mode-face `(:family ,serif-font-face
+                                                      :height 160
+                                                      :weight thin))
                 (buffer-face-mode)
                 (enable-distraction-free-writing))))
 
@@ -360,7 +362,9 @@ Deletes whitespace at join."
   (add-hook 'text-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (setq buffer-face-mode-face `(:family ,serif-font-face
+                                                      :height 160
+                                                      :weight thin))
                 (buffer-face-mode)
                 (enable-distraction-free-writing)))))
 
@@ -369,7 +373,9 @@ Deletes whitespace at join."
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face))
+                (setq buffer-face-mode-face `(:family ,serif-font-face
+                                                      :height 160
+                                                      :width thin))
                 (buffer-face-mode)
                 (typo-mode -1)
                 (enable-distraction-free-writing)))))
