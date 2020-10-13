@@ -262,13 +262,13 @@ Deletes whitespace at join."
                              (0 (prog1 ()
                                   (compose-region (match-beginning 1)
                                                   (match-end 1)
-                                                  "●"))))))
+                                                  "»"))))))
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
                              (0 (prog1 ()
                                   (compose-region (match-beginning 1)
                                                   (match-end 1)
-                                                  "○")))))))
+                                                  "•")))))))
 
 (defun fmt-org-mode-style ()
   "Customize `org-mode' look and feel."
@@ -327,6 +327,7 @@ Deletes whitespace at join."
        org-use-sub-superscripts "{}"
        org-startup-indented t
        spaceline-org-clock-p t)
+      (fmt-org-bullets)
       (fmt-org-mode-style)))
 
   ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
