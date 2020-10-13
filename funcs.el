@@ -284,7 +284,7 @@ Deletes whitespace at join."
                                        :weight thin))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
-                                    :height 120))))
+                                    :height 130))))
          `(org-block     ((t (:inherit fixed-pitch))))
          `(org-code     ((t (:inherit (shadow fixed-pitch)))))
          '(org-document-info ((t (:foreground "#fb5607"))))
