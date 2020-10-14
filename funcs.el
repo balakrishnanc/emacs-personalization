@@ -339,7 +339,8 @@ Deletes whitespace at join."
        org-startup-indented t
        spaceline-org-clock-p t)
       (fmt-org-bullets)
-      (fmt-org-mode-style)))
+      (fmt-org-mode-style)
+      (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree)))
 
   ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
   (add-hook 'org-mode-hook 'auto-save-mode)
