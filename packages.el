@@ -28,38 +28,17 @@
 ;;; Code:
 
 (defconst personalization-packages
-  '(all-the-icons
-    avy
-    default-text-scale
-    doom-themes
+  '(doom-themes
     gnuplot-mode
     goto-last-change
     helm-projectile
-    pretty-mode
-    vi-tilde-fringe))
-
-(defun personalization/post-init-all-the-icons ()
-  (use-package all-the-icons))
-
-(defun personalization/post-init-avy ()
-  (use-package avy
-    :bind (("C-:" . avy-goto-char)
-           ("M-g g" . avy-goto-line))))
-
-(defun personalization/init-default-text-scale ()
-  (use-package default-text-scale
-    :bind (("C-M-+" . default-text-scale-increase)
-           ("C-M--" . default-text-scale-decrease))))
+    pretty-mode))
 
 (defun personalization/init-doom-themes ()
   (use-package doom-themes
-    :after (neotree org)
     :config (progn
               (setq doom-themes-enable-bold t
                     doom-themes-enable-italic t)
-              (setq doom-neotree-enable-variable-pitch t
-                    doom-neotree-file-icons 'simple
-                    doom-neotree-line-spacing 4)
               (doom-themes-org-config))))
 
 (defun personalization/init-gnuplot-mode ()
@@ -87,12 +66,7 @@
                            helm-source-file-not-found t))))
 
 (defun personalization/init-pretty-mode ()
-  (use-package pretty-mode
-    :config (global-pretty-mode t)))
-
-(defun personalization/post-init-vi-tilde-fringe ()
-  (use-package vi-tilde-fringe
-    :config (global-vi-tilde-fringe-mode -1)))
+  (use-package pretty-mode))
 
 
 ;;; packages.el ends here
