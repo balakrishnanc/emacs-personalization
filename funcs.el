@@ -292,7 +292,7 @@ Deletes whitespace at join."
          'user
          `(variable-pitch ((t (:family ,serif-font-face
                                        :height 160
-                                       :weight thin))))
+                                       :weight normal))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
                                     :height 130))))
@@ -362,8 +362,9 @@ Deletes whitespace at join."
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face
                                                       :height 160
-                                                      :weight thin))
+                                                      :weight normal))
                 (buffer-face-mode)
+                (pretty-mode)
                 (enable-distraction-free-writing))))
 
   ;; Perform full-document previews.
@@ -376,7 +377,7 @@ Deletes whitespace at join."
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face
                                                       :height 160
-                                                      :weight thin))
+                                                      :weight normal))
                 (buffer-face-mode)
                 (enable-distraction-free-writing)))))
 
@@ -387,7 +388,7 @@ Deletes whitespace at join."
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face
                                                       :height 160
-                                                      :width thin))
+                                                      :width normal))
                 (buffer-face-mode)
                 (typo-mode -1)
                 (enable-distraction-free-writing)))))
