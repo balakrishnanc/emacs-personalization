@@ -231,7 +231,17 @@ Deletes whitespace at join."
                                             (file-name-as-directory "quicklisp")
                                             "slime-helper.el")))
                   (when (file-exists-p slime-config)
-                    (load slime-config)))))))
+                    (load slime-config)))
+
+                (let ((sbcl-bin "/usr/local/bin/sbcl"))
+                  (when (and (file-exists-p sbcl-bin)
+                             (file-executable-p sbcl-bin))
+                    (setq inferior-lisp-program sbcl-bin)))
+
+                ;; ;; Minor mode to keep S-expressions safely balanced.
+                ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-common-lisp-mode)
+
+                (pretty-mode)))))
 
 (defun setup-programming-mode ()
   "Add customizations to setup a development environment."
