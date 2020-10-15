@@ -28,11 +28,16 @@
 ;;; Code:
 
 (defconst personalization-packages
-  '(doom-themes
+  '(doom-modeline
+    doom-themes
     gnuplot-mode
     goto-last-change
     helm-projectile
     pretty-mode))
+
+(defun personalization/init-doom-modeline ()
+  (use-package doom-modeline
+    :init (doom-modeline-mode)))
 
 (defun personalization/init-doom-themes ()
   (use-package doom-themes
