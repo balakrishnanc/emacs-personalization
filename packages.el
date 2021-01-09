@@ -33,7 +33,10 @@
     gnuplot-mode
     goto-last-change
     helm-projectile
-    pretty-mode))
+    pretty-mode
+    tango-plus-theme
+    twilight-anti-bright-theme
+    twilight-bright-theme))
 
 (defun personalization/init-doom-modeline ()
   (use-package doom-modeline
@@ -73,5 +76,13 @@
 (defun personalization/init-pretty-mode ()
   (use-package pretty-mode))
 
+(defun personalization/init-tango-plus-theme ()
+  (use-package tango-plus-theme))
+
+(defun personalization/init-twilight-anti-bright-theme ()
+  (use-package twilight-anti-bright-theme))
+
+(defun personalization/init-twilight-bright-theme ()
+  (use-package twilight-bright-theme))
 
 ;;; packages.el ends here
