@@ -450,6 +450,9 @@ Deletes whitespace at join."
   ;; Show recently opened files in helm.
   (setq-default helm-ff-file-name-history-use-recentf t)
 
+  ;; Configure projectile to use `.projectile' files, if any, in the project directory.
+  (setq projectile-indexing-method 'hybrid)
+
   (when (eq system-type 'darwin)
     (advice-add 'handle-delete-frame :override
                 #'handle-delete-frame-without-kill-emacs)))
