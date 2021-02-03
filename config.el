@@ -48,11 +48,11 @@
 (defvar auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defvar serif-font-face "Courier New"
+(defvar serif-font-face "Courier Prime" ; "Courier New"
   "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
-(defvar monospace-font-face "Source Code Pro"
+(defvar monospace-font-face "Office Code Pro" ; "Source Code Pro"
   "Default _monospace_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
