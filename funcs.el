@@ -338,6 +338,7 @@ Deletes whitespace at join."
        org-use-sub-superscripts "{}"
        org-startup-indented t
        spaceline-org-clock-p t)
+      (setq-default line-spacing 2)
       (fmt-org-bullets)
       (fmt-org-mode-style)
       (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree)))
