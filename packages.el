@@ -28,17 +28,52 @@
 ;;; Code:
 
 (defconst personalization-packages
-  '(doom-modeline
-    doom-themes
-    gnuplot-mode
-    goto-last-change
-    helm-projectile
-    pretty-mode
-    tango-plus-theme
-    twilight-anti-bright-theme
-    twilight-bright-theme))
+  '(deft
+     doom-modeline
+     doom-themes
+     gnuplot-mode
+     goto-last-change
+     helm-projectile
+     pretty-mode
+     tango-plus-theme
+     twilight-anti-bright-theme
+     twilight-bright-theme))
 
-(defun personalization/init-doom-modeline ()
+(defun personalization/post-init-deft ()
+  (use-package deft
+    :config (progn
+              (setq
+               deft-directory "~/Documents/Shire/research/notes"
+               deft-time-format "%H:%M %d-%m-%y"
+               deft-extensions '("org" "md" "txt")
+               deft-use-filename-as-title nil
+               deft-use-filter-string-for-filename t
+               deft-file-naming-rules '((noslash . ".")
+                                        (nospace . "-")
+                                        (case-fn . downcase))
+               deft-markdown-mode-title-level 1
+               deft-org-mode-title-prefix t
+               deft-strip-summary-regexp (concat
+                                          "\\("
+                                          ;; blank
+                                          "[\n\t]"
+                                          ;; Titles
+                                          "\\|\\*.*$"
+                                          ;; org-mode metadata
+                                          "\\|^#\\+[[:upper:]_]+:.*$"
+                                          ;; Reference metadata
+                                          "\\|^#\\+begin_example.*$"
+                                          "\\|^#\\+end_example.*$"
+                                          ;; Bibtex
+                                          "\\|^@.*$"
+                                          "\\|.*[[:alpha:]].*=.*"
+                                          "\\)")
+               deft-separator "\n\t")
+              (custom-theme-set-faces
+               'user
+               `(deft-time-face ((t (:height 0.8))))))))
+
+(defun personalization/post-init-doom-modeline ()
   (use-package doom-modeline
     :init (doom-modeline-mode)))
 
