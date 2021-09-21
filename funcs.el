@@ -351,9 +351,6 @@ Deletes whitespace at join."
   ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
   (add-hook 'org-mode-hook 'auto-save-mode)
 
-  ;; Turn on `variable-pitch-mode' for customizing look and feel.
-  (add-hook 'org-mode-hook 'variable-pitch-mode)
-
   (add-hook 'org-mode-hook
             (lambda ()
               (progn
