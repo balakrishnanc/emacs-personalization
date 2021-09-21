@@ -44,7 +44,7 @@
     :config (progn
               (setq
                deft-directory "~/Documents/Shire/research/notes"
-               deft-time-format "%H:%M %d-%m-%y"
+               deft-time-format "%H:%M %b. %d, %Y"
                deft-extensions '("org" "md" "txt")
                deft-use-filename-as-title nil
                deft-use-filter-string-for-filename t
@@ -68,10 +68,7 @@
                                           "\\|^@.*$"
                                           "\\|.*[[:alpha:]].*=.*"
                                           "\\)")
-               deft-separator "\n\t")
-              (custom-theme-set-faces
-               'user
-               `(deft-time-face ((t (:height 0.8))))))))
+               deft-separator "\n"))))
 
 (defun personalization/post-init-doom-modeline ()
   (use-package doom-modeline
