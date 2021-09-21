@@ -34,6 +34,11 @@
      gnuplot-mode
      goto-last-change
      helm-projectile
+     (modus-themes
+      :location (recipe
+                 :fetcher github
+                 :repo "protesilaos/modus-themes"))
+     olivetti
      pretty-mode
      tango-plus-theme
      twilight-anti-bright-theme
@@ -104,6 +109,12 @@
                   :action 'find-file))
               (add-to-list 'helm-projectile-sources-list
                            helm-source-file-not-found t))))
+
+(defun personalization/init-modus-themes ()
+  (use-package modus-themes))
+
+(defun personalization/init-olivetti ()
+  (use-package olivetti))
 
 (defun personalization/init-pretty-mode ()
   (use-package pretty-mode))

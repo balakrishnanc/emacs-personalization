@@ -171,6 +171,7 @@ Deletes whitespace at join."
 (defun disable-distraction-free-writing ()
   "Disable distraction-free-writing mode."
   (progn
+    (olivetti-mode -1)
     ;; Disable visual line mode.
     (visual-line-mode -1)
     ;; NOTE: `visual-line-mode' affects `truncate-lines' and `word-wrap'.
@@ -186,6 +187,9 @@ Deletes whitespace at join."
 (defun enable-distraction-free-writing ()
   "Enable distraction-free-writing mode."
   (progn
+    (olivetti-set-width 81)
+    (olivetti-mode 1)
+    (spacemacs/toggle-vi-tilde-fringe-off)
     ;; Enable visual line mode.
     (visual-line-mode 1)
     ;; Disable `truncate-lines' feature.
