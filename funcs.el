@@ -291,13 +291,15 @@ Deletes whitespace at join."
         (custom-theme-set-faces
          'user
          `(variable-pitch ((t (:family ,serif-font-face
-                                       :height 160
+                                       :height 1.1
                                        :weight normal))))
          `(fixed-pitch ((t (:family ,monospace-font-face
                                     :slant normal
-                                    :height 130))))
-         `(org-block     ((t (:inherit fixed-pitch))))
-         `(org-code     ((t (:inherit (shadow fixed-pitch)))))
+                                    :height 0.8))))
+         `(org-block ((t (:inherit fixed-pitch))))
+         `(org-block-begin-line ((t (:inherit fixed-pitch))))
+         `(org-block-end-line ((t (:inherit fixed-pitch))))
+         `(org-code ((t (:inherit (shadow fixed-pitch)))))
          '(org-document-info ((t (:foreground "#fb5607"))))
          '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
          '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
@@ -338,7 +340,6 @@ Deletes whitespace at join."
        org-use-sub-superscripts "{}"
        org-startup-indented t
        spaceline-org-clock-p t)
-      (setq-default line-spacing 2)
       (fmt-org-bullets)
       (fmt-org-mode-style)
       (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree)))
