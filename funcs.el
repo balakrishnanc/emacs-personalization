@@ -359,16 +359,22 @@ Deletes whitespace at join."
 (defun setup-latex-mode ()
   "Customize `latex-mode'."
   (with-eval-after-load 'latex
-    (setq-default TeX-master nil))
+    (progn
+      (setq-default TeX-master nil)
+      (custom-theme-set-faces
+       'user
+       `(variable-pitch ((t (:family ,serif-font-face
+                                     :height 1.1
+                                     :weight normal))))
+       `(fixed-pitch ((t (:family ,monospace-font-face
+                                  :slant normal
+                                  :height 1.0))))
+       `(font-latex-math-face ((t (:inherit (shadow fixed-pitch)))))
+       `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.2 :weight bold)))))))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face
-                                                      :height 160
-                                                      :weight normal))
-                (buffer-face-mode)
-                (pretty-mode)
                 (enable-distraction-free-writing))))
 
   ;; Perform full-document previews.
@@ -380,7 +386,7 @@ Deletes whitespace at join."
             (lambda ()
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face
-                                                      :height 160
+                                                      :height 1.1
                                                       :weight normal))
                 (buffer-face-mode)
                 (enable-distraction-free-writing)))))
@@ -391,7 +397,7 @@ Deletes whitespace at join."
             (lambda ()
               (progn
                 (setq buffer-face-mode-face `(:family ,serif-font-face
-                                                      :height 160
+                                                      :height 1.1
                                                       :width normal))
                 (buffer-face-mode)
                 (typo-mode -1)
