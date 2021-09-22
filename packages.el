@@ -111,7 +111,20 @@
                            helm-source-file-not-found t))))
 
 (defun personalization/init-modus-themes ()
-  (use-package modus-themes))
+  (use-package modus-themes
+    :ensure t
+    :init (progn
+            (setq modus-themes-italic-constructs t
+                  modus-themes-bold-constructs nil
+                  modus-themes-region '(bg-only no-extend))
+            ;; Load the theme files before enabling a theme (else you get an error).
+            (modus-themes-load-themes))
+    :config (let* ((hr (nth 2 (decode-time (current-time)))))
+              ;; Decide on a theme based on the hour of the day.
+              (if (and (>= hr 8) (<= hr 18))
+                  (modus-themes-load-operandi)
+                (modus-themes-load-vivendi)))
+    :bind ("<f6>" . modus-themes-toggle)))
 
 (defun personalization/init-olivetti ()
   (use-package olivetti))
