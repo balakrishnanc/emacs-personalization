@@ -294,27 +294,21 @@ Deletes whitespace at join."
 
         (custom-theme-set-faces
          'user
-         `(variable-pitch ((t (:family ,serif-font-face
-                                       :height 1.1
-                                       :weight normal))))
-         `(fixed-pitch ((t (:family ,monospace-font-face
-                                    :slant normal
-                                    :height 0.8))))
          `(org-block ((t (:inherit fixed-pitch))))
          `(org-block-begin-line ((t (:inherit fixed-pitch))))
-         `(org-block-end-line ((t (:inherit fixed-pitch))))
+         `(org-block-end-line ((t (:inherit org-block-begin-line))))
          `(org-code ((t (:inherit (shadow fixed-pitch)))))
-         '(org-document-info ((t (:foreground "#fb5607"))))
-         '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-         '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-         '(org-link ((t (:foreground "#3a86ff" :underline t))))
-         '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-         '(org-property-value ((t (:inherit fixed-pitch))) t)
-         '(org-special-keyword ((t (:inherit (font-lock-comment-face
+         `(org-document-info ((t (:foreground "#fb5607"))))
+         `(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+         `(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+         `(org-link ((t (:foreground "#3a86ff" :underline t))))
+         `(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+         `(org-property-value ((t (:inherit fixed-pitch))) t)
+         `(org-special-keyword ((t (:inherit (font-lock-comment-face
                                               fixed-pitch)))))
-         '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-         '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-         '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
+         `(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+         `(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+         `(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
          `(org-document-title
            ((t (,@heading-attrs ,@heading-font
                                 :height 1.5 :underline t))))
@@ -348,12 +342,13 @@ Deletes whitespace at join."
       (fmt-org-mode-style)
       (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree)))
 
-  ;; Turn on `auto-save' for `org-mode' to _safely_ store notes.
-  (add-hook 'org-mode-hook 'auto-save-mode)
-
   (add-hook 'org-mode-hook
             (lambda ()
               (progn
+                ;; For `org-mode' to _safely_ store notes.
+                (auto-save-mode 1)
+                ;; For customizing look and feel.
+                (variable-pitch-mode 1)
                 (enable-distraction-free-writing)))))
 
 (defun setup-latex-mode ()
@@ -363,18 +358,14 @@ Deletes whitespace at join."
       (setq-default TeX-master nil)
       (custom-theme-set-faces
        'user
-       `(variable-pitch ((t (:family ,serif-font-face
-                                     :height 1.1
-                                     :weight normal))))
-       `(fixed-pitch ((t (:family ,monospace-font-face
-                                  :slant normal
-                                  :height 1.0))))
-       `(font-latex-math-face ((t (:inherit (shadow fixed-pitch)))))
-       `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.2 :weight bold)))))))
+       `(font-latex-math-face ((t (:inherit (shadow fixed-pitch) :height 0.9))))
+       `(font-latex-sedate-face ((t (:inherit fixed-pitch :height 1.0))))
+       `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.1 :weight bold)))))))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()
               (progn
+                (variable-pitch-mode 1)
                 (enable-distraction-free-writing))))
 
   ;; Perform full-document previews.
@@ -385,10 +376,7 @@ Deletes whitespace at join."
   (add-hook 'text-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face
-                                                      :height 1.1
-                                                      :weight normal))
-                (buffer-face-mode)
+                (variable-pitch-mode 1)
                 (enable-distraction-free-writing)))))
 
 (defun setup-markdown-mode ()
@@ -396,15 +384,20 @@ Deletes whitespace at join."
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
-                (setq buffer-face-mode-face `(:family ,serif-font-face
-                                                      :height 1.1
-                                                      :width normal))
-                (buffer-face-mode)
+                (variable-pitch-mode 1)
                 (typo-mode -1)
                 (enable-distraction-free-writing)))))
 
 (defun customize-modes ()
   "Customize different modes."
+  (custom-theme-set-faces
+    'user
+    `(variable-pitch ((t (:family ,serif-font-face
+                                  :height 1.6
+                                  :weight normal))))
+    `(fixed-pitch ((t (:family ,monospace-font-face
+                              :slant normal
+                              :height 0.8)))))
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
