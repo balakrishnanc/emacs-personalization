@@ -403,7 +403,7 @@ Deletes whitespace at join."
   (custom-theme-set-faces
     'user
     `(variable-pitch ((t (:family ,serif-font-face
-                                  :height 1.6
+                                  :height 1.5
                                   :weight normal))))
     `(fixed-pitch ((t (:family ,monospace-font-face
                               :slant normal
