@@ -302,6 +302,7 @@ Deletes whitespace at join."
          `(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
          `(org-indent ((t (:inherit (org-hide fixed-pitch)))))
          `(org-link ((t (:foreground "#3a86ff" :underline t))))
+         `(org-list-dt ((t (:inherit variable-pitch))))
          `(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
          `(org-property-value ((t (:inherit fixed-pitch))) t)
          `(org-special-keyword ((t (:inherit (font-lock-comment-face
@@ -311,7 +312,7 @@ Deletes whitespace at join."
          `(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
          `(org-document-title
            ((t (,@heading-attrs ,@heading-font
-                                :height 1.5 :underline t))))
+                                :height 1.5 :underline nil))))
          `(org-level-8   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-7   ((t (,@heading-attrs ,@heading-font))))
          `(org-level-6   ((t (,@heading-attrs ,@heading-font))))
