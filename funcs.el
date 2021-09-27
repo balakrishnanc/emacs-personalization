@@ -382,6 +382,15 @@ Deletes whitespace at join."
 
 (defun setup-markdown-mode ()
   "Customize `markdown-mode'."
+  (with-eval-after-load 'markdown
+    (progn
+      (custom-theme-set-faces
+       'user
+       `(markdown-inline-code-face ((t (:inherit
+                                        (markdown-code-face
+                                         markdown-pre-face
+                                         shadow
+                                         fixed-pitch) :height 1.0)))))))
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
