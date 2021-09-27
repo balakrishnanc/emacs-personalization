@@ -48,7 +48,7 @@
 (defvar auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defvar serif-font-face "Crimson Text" ; "Linux Libertine O" ; "Courier Prime"
+(defvar serif-font-face "Alegreya" ; "Crimson Text" ; "Courier Prime"
   "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
