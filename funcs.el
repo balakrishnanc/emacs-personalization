@@ -441,6 +441,9 @@ Deletes whitespace at join."
 
 (defun customize-editor-behavior ()
   "Customize common editor behavior."
+  ;; Start server.
+  (setq-default dotspacemacs-enable-server t)
+
   (use-utf-8-everywhere)
 
   (setup-auto-saves-and-bkups)
