@@ -402,12 +402,15 @@ Deletes whitespace at join."
   "Customize different modes."
   (custom-theme-set-faces
     'user
+    ;; `(default ((t (:family "Source Code Pro"
+    ;;                        :slant normal
+    ;;                        :height 130))))
     `(variable-pitch ((t (:family ,serif-font-face
                                   :height 1.4
                                   :weight normal))))
     `(fixed-pitch ((t (:family ,monospace-font-face
                               :slant normal
-                              :height 0.8)))))
+                              :height 0.9)))))
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
