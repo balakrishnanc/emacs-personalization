@@ -301,7 +301,7 @@ Deletes whitespace at join."
          `(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
          `(org-indent ((t (:inherit (org-hide fixed-pitch)))))
          `(org-link ((t (:foreground "#3a86ff" :underline t))))
-         `(org-list-dt ((t (:inherit variable-pitch))))
+         `(org-list-dt ((t (:inherit variable-pitch :height 0.7))))
          `(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
          `(org-property-value ((t (:inherit fixed-pitch))) t)
          `(org-special-keyword ((t (:inherit (font-lock-comment-face
