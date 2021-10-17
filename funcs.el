@@ -277,12 +277,12 @@ Deletes whitespace at join."
                              (0 (prog1 ()
                                   (compose-region (match-beginning 1)
                                                   (match-end 1)
-                                                  "■"))))
+                                                  "•"))))
                           ("^ *\\([-]\\) "
                              (0 (prog1 ()
                                   (compose-region (match-beginning 1)
                                                   (match-end 1)
-                                                  "•")))))))
+                                                  "⋯")))))))
 
 (defun fmt-org-mode-style ()
   "Customize `org-mode' look and feel."
