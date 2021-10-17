@@ -362,7 +362,7 @@ Deletes whitespace at join."
        `(font-lock-function-name-face ((t (:inherit fixed-pitch :height 1.0))))
        `(font-lock-constant-face ((t (:inherit fixed-pitch :height 1.0 :weight bold))))
        `(font-latex-sedate-face ((t (:inherit fixed-pitch :height 1.0))))
-       `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.1 :weight bold)))))))
+       `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.0 :weight bold)))))))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()
