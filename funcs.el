@@ -352,14 +352,15 @@ Deletes whitespace at join."
 
 (defun setup-latex-mode ()
   "Customize `latex-mode'."
+  (custom-theme-set-faces
+   'user
+   `(font-latex-math-face ((t (:inherit (shadow fixed-pitch) :height 0.9))))
+   `(font-latex-sedate-face ((t (:inherit fixed-pitch :height 1.0))))
+   `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.0 :weight bold)))))
+
   (with-eval-after-load 'latex
     (progn
-      (setq-default TeX-master nil)
-      (custom-theme-set-faces
-       'user
-       `(font-latex-math-face ((t (:inherit (shadow fixed-pitch) :height 0.9))))
-       `(font-latex-sedate-face ((t (:inherit fixed-pitch :height 1.0))))
-       `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.0 :weight bold)))))))
+      (setq-default TeX-master nil)))
 
   (add-hook 'LaTeX-mode-hook
             (lambda ()
@@ -380,15 +381,13 @@ Deletes whitespace at join."
 
 (defun setup-markdown-mode ()
   "Customize `markdown-mode'."
-  (with-eval-after-load 'markdown
-    (progn
-      (custom-theme-set-faces
-       'user
-       `(markdown-inline-code-face ((t (:inherit
-                                        (markdown-code-face
-                                         markdown-pre-face
-                                         shadow
-                                         fixed-pitch) :height 1.0)))))))
+  (custom-theme-set-faces
+   'user
+   `(markdown-inline-code-face ((t (:inherit
+                                    (markdown-code-face
+                                     markdown-pre-face
+                                     shadow
+                                     fixed-pitch) :height 1.0)))))
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
