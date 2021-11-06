@@ -358,8 +358,6 @@ Deletes whitespace at join."
       (custom-theme-set-faces
        'user
        `(font-latex-math-face ((t (:inherit (shadow fixed-pitch) :height 0.9))))
-       `(font-lock-function-name-face ((t (:inherit fixed-pitch :height 1.0))))
-       `(font-lock-constant-face ((t (:inherit fixed-pitch :height 1.0 :weight bold))))
        `(font-latex-sedate-face ((t (:inherit fixed-pitch :height 1.0))))
        `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.0 :weight bold)))))))
 
