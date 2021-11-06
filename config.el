@@ -48,7 +48,11 @@
 (defvar auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defvar serif-font-face "Linux Biolinum O" ; "Courier Prime"
+(defvar base-font-face "Source Code Pro"
+  "Default font family.
+Check the font name with function `can-use-font?' to avoid errors.")
+
+(defvar serif-font-face "Crimson Pro" ; "Linux Biolinum O" ; "Courier Prime"
   "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
