@@ -315,10 +315,10 @@ Deletes whitespace at join."
          `(org-level-7   ((t (,@heading-attrs ,@heading-font :height 1.0))))
          `(org-level-6   ((t (,@heading-attrs ,@heading-font :height 1.0))))
          `(org-level-5   ((t (,@heading-attrs ,@heading-font :height 1.0))))
-         `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.1))))
-         `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.2))))
-         `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.3))))
-         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.4)))))))
+         `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.0))))
+         `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.1))))
+         `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.2))))
+         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.3)))))))
 
 (defun setup-org-mode ()
   "Customize `org-mode'."
