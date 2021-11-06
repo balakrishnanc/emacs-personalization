@@ -208,7 +208,6 @@ Deletes whitespace at join."
       (disable-distraction-free-writing)
     (enable-distraction-free-writing)))
 
-
 ;; --- Customize look and feel. ---
 ;; --------------------------------------------------
 
