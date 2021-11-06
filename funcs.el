@@ -399,11 +399,11 @@ Deletes whitespace at join."
   "Customize different modes."
   (custom-theme-set-faces
     'user
-    ;; `(default ((t (:family ,base-font-face
-    ;;                        :slant normal
-    ;;                        :height 120))))
+    `(default ((t (:family ,base-font-face
+                           :slant normal
+                           :height 130))))
     `(variable-pitch ((t (:family ,serif-font-face
-                                  :height 1.6
+                                  :height 1.5
                                   :weight normal))))
     `(fixed-pitch ((t (:family ,monospace-font-face
                               :slant normal
