@@ -17,6 +17,10 @@
 ;; Align using regular-expression
 (global-set-key (kbd "C-M-'") 'align-regexp)
 
+;; Increase or decrease text size.
+(global-set-key (kbd "C-M-+") 'text-scale-increase)
+(global-set-key (kbd "C-M--") 'text-scale-decrease)
+
 ;; Comment or Uncomment region in buffer.
 (global-set-key (kbd "C-M-]") 'comment-region)
 (global-set-key (kbd "C-M-[") 'uncomment-region)
