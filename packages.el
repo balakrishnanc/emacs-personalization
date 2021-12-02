@@ -9,75 +9,54 @@
 
 ;;; Commentary:
 
-;; See the Spacemacs documentation and FAQs for instructions on how to implement
-;; a new layer:
-;;
-;;   SPC h SPC layers RET
-;;
-;;
-;; Briefly, each package to be installed or configured by this layer should be
-;; added to `personalization-packages'. Then, for each package PACKAGE:
-;;
-;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `personalization/init-PACKAGE' to load and initialize the package.
-
-;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `personalization/pre-init-PACKAGE' and/or
-;;   `personalization/post-init-PACKAGE' to customize the package as it is loaded.
+;; Simple customizations.
 
 ;;; Code:
 
 (defconst personalization-packages
   '(deft
-     doom-modeline
-     doom-themes
-     gnuplot-mode
-     goto-last-change
-     helm-projectile
-     (modus-themes
-      :location (recipe
-                 :fetcher github
-                 :repo "protesilaos/modus-themes"))
-     olivetti
-     pretty-mode
-     tango-plus-theme
-     twilight-anti-bright-theme
-     twilight-bright-theme))
+    doom-themes
+    gnuplot-mode
+    goto-last-change
+    helm-projectile
+    (modus-themes
+     :location (recipe
+                :fetcher github
+                :repo "protesilaos/modus-themes"))
+    olivetti
+    pretty-mode)
+  "Packages required by the personalization layer.")
 
 (defun personalization/post-init-deft ()
   (use-package deft
-    :config (progn
-              (setq
-               deft-directory "~/Documents/Shire/research/notes"
-               deft-time-format "%H:%M %b. %d, %Y"
-               deft-extensions '("org" "md" "txt")
-               deft-use-filename-as-title nil
-               deft-use-filter-string-for-filename t
-               deft-file-naming-rules '((noslash . ".")
-                                        (nospace . "-")
-                                        (case-fn . downcase))
-               deft-markdown-mode-title-level 1
-               deft-org-mode-title-prefix t
-               deft-strip-summary-regexp (concat
-                                          "\\("
-                                          ;; blank
-                                          "[\n\t]"
-                                          ;; Titles
-                                          "\\|\\*.*$"
-                                          ;; org-mode metadata
-                                          "\\|^#\\+[[:upper:]_]+:.*$"
-                                          ;; Reference metadata
-                                          "\\|^#\\+begin_example.*$"
-                                          "\\|^#\\+end_example.*$"
-                                          ;; Bibtex
-                                          "\\|^@.*$"
-                                          "\\|.*[[:alpha:]].*=.*"
-                                          "\\)")
-               deft-separator "\n"))))
-
-(defun personalization/post-init-doom-modeline ()
-  (use-package doom-modeline
-    :init (doom-modeline-mode)))
+    :config
+    (setq
+     deft-directory "~/Documents/Shire/research/notes"
+     deft-time-format "%H:%M %b. %d, %Y"
+     deft-extensions '("org" "md" "txt")
+     deft-use-filename-as-title nil
+     deft-use-filter-string-for-filename t
+     deft-file-naming-rules '((noslash . ".")
+                              (nospace . "-")
+                              (case-fn . downcase))
+     deft-markdown-mode-title-level 1
+     deft-org-mode-title-prefix t
+     deft-strip-summary-regexp (concat
+                                "\\("
+                                ;; blank
+                                "[\n\t]"
+                                ;; Titles
+                                "\\|\\*.*$"
+                                ;; org-mode metadata
+                                "\\|^#\\+[[:upper:]_]+:.*$"
+                                ;; Reference metadata
+                                "\\|^#\\+begin_example.*$"
+                                "\\|^#\\+end_example.*$"
+                                ;; Bibtex
+                                "\\|^@.*$"
+                                "\\|.*[[:alpha:]].*=.*"
+                                "\\)")
+     deft-separator "\n")))
 
 (defun personalization/init-doom-themes ()
   (use-package doom-themes
@@ -131,14 +110,5 @@
 
 (defun personalization/init-pretty-mode ()
   (use-package pretty-mode))
-
-(defun personalization/init-tango-plus-theme ()
-  (use-package tango-plus-theme))
-
-(defun personalization/init-twilight-anti-bright-theme ()
-  (use-package twilight-anti-bright-theme))
-
-(defun personalization/init-twilight-bright-theme ()
-  (use-package twilight-bright-theme))
 
 ;;; packages.el ends here
