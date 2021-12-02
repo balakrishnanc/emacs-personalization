@@ -84,6 +84,9 @@
 (defun indent-on-paste ()
   "Indent text on paste."
   (dolist (command '(yank yank-pop))
+    ;; Warning: indent-on-paste sucks in the following modes.
+    ;; python-mode
+    ;; haskell-mode
     (eval `(defadvice ,command (after indent-region activate)
              (and (not current-prefix-arg)
                   (member major-mode
@@ -95,9 +98,6 @@
                             latex-mode
                             c-mode
                             c++-mode
-                            ;; indent-on-paste sucks in the following modes.
-                            ;; python-mode
-                            ;; haskell-mode
                             ))
                   (let ((mark-even-if-inactive transient-mark-mode))
                     (indent-region (region-beginning) (region-end) nil)))))))
