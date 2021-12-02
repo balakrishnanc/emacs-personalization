@@ -48,18 +48,6 @@
 (defconst auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defconst base-font-face "SauceCodePro Nerd Font" ; "Source Code Pro"
-  "Default font family.
-Check the font name with function `can-use-font?' to avoid errors.")
-
-(defconst serif-font-face "SauceCodePro Nerd Font" ; "Crimson Pro"
-  "Default _serif_ font family for `org-mode', `text-mode', and others.
-Check the font name with function `can-use-font?' to avoid errors.")
-
-(defconst monospace-font-face "SauceCodePro Nerd Font" ; "Source Code Pro"
-  "Default _monospace_ font family for `org-mode', `text-mode', and others.
-Check the font name with function `can-use-font?' to avoid errors.")
-
 (defconst custom-file
   (concat (file-name-as-directory
            (expand-file-name "~/.emacs.d")) "custom.el")
@@ -70,12 +58,5 @@ Check the font name with function `can-use-font?' to avoid errors.")
    (file-name-as-directory (expand-file-name "~/.emacs.d"))
    "opam-user-setup.el")
   "Auto-generated opam user-setup configuration file.")
-
-;; --- Run all customizations. ---
-;; --------------------------------------------------
-(customize-modes)
-(customize-editor-behavior)
-(customize-look-and-feel)
-
 
 ;;; config.el ends here

@@ -269,56 +269,6 @@ Deletes whitespace at join."
       t
     nil))
 
-(defun fmt-org-bullets ()
-  "Customize bullets in `org-mode'"
-  (font-lock-add-keywords 'org-mode
-                          '(("^ *\\([+]\\) "
-                             (0 (prog1 ()
-                                  (compose-region (match-beginning 1)
-                                                  (match-end 1)
-                                                  "•"))))
-                          ("^ *\\([-]\\) "
-                             (0 (prog1 ()
-                                  (compose-region (match-beginning 1)
-                                                  (match-end 1)
-                                                  "⋯")))))))
-
-(defun fmt-org-mode-style ()
-  "Customize `org-mode' look and feel."
-  (let* ((base-font-color (face-foreground 'default nil 'default))
-             (heading-font    `(:font ,serif-font-face))
-             (heading-attrs   `(:inherit default
-                                         :weight bold)))
-
-        (custom-theme-set-faces
-         'user
-         `(org-block ((t (:inherit fixed-pitch))))
-         `(org-block-begin-line ((t (:inherit fixed-pitch))))
-         `(org-block-end-line ((t (:inherit org-block-begin-line))))
-         `(org-code ((t (:inherit (shadow fixed-pitch)))))
-         `(org-document-info ((t (:foreground "#fb5607"))))
-         `(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-         `(org-document-info-title ((t (:inherit (shadow fixed-pitch)
-                                                 :weight bold :underline nil))))
-         `(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-         `(org-link ((t (:foreground "#3a86ff" :underline t))))
-         `(org-list-dt ((t (:inherit variable-pitch :height 0.7))))
-         `(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-         `(org-property-value ((t (:inherit fixed-pitch))) t)
-         `(org-special-keyword ((t (:inherit (font-lock-comment-face
-                                              fixed-pitch)))))
-         `(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-         `(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-         `(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
-         `(org-level-8   ((t (,@heading-attrs ,@heading-font :height 1.0))))
-         `(org-level-7   ((t (,@heading-attrs ,@heading-font :height 1.0))))
-         `(org-level-6   ((t (,@heading-attrs ,@heading-font :height 1.0))))
-         `(org-level-5   ((t (,@heading-attrs ,@heading-font :height 1.0))))
-         `(org-level-4   ((t (,@heading-attrs ,@heading-font :height 1.0))))
-         `(org-level-3   ((t (,@heading-attrs ,@heading-font :height 1.1))))
-         `(org-level-2   ((t (,@heading-attrs ,@heading-font :height 1.2))))
-         `(org-level-1   ((t (,@heading-attrs ,@heading-font :height 1.3)))))))
-
 (defun setup-org-mode ()
   "Customize `org-mode'."
   (with-eval-after-load 'org
@@ -336,8 +286,6 @@ Deletes whitespace at join."
        org-use-sub-superscripts "{}"
        org-startup-indented t
        spaceline-org-clock-p t)
-      (fmt-org-bullets)
-      (fmt-org-mode-style)
       (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree))
 
     (add-hook 'org-mode-hook
@@ -346,17 +294,10 @@ Deletes whitespace at join."
                   ;; For `org-mode' to _safely_ store notes.
                   (auto-save-mode 1)
                   ;; For customizing look and feel.
-                  ;; (variable-pitch-mode 1)
                   (enable-distraction-free-writing))))))
 
 (defun setup-latex-mode ()
   "Customize `latex-mode'."
-  (custom-theme-set-faces
-   'user
-   `(font-latex-math-face ((t (:inherit (shadow fixed-pitch) :height 0.9))))
-   `(font-latex-sedate-face ((t (:inherit fixed-pitch :height 1.0))))
-   `(font-latex-sectioning-2-face ((t (:inherit variable-pitch :height 1.0 :weight bold)))))
-
   (with-eval-after-load 'latex
     (progn
       (setq-default TeX-master nil)))
@@ -364,7 +305,6 @@ Deletes whitespace at join."
   (add-hook 'LaTeX-mode-hook
             (lambda ()
               (progn
-                ;; (variable-pitch-mode 1)
                 (enable-distraction-free-writing))))
 
   ;; Perform full-document previews.
@@ -375,38 +315,17 @@ Deletes whitespace at join."
   (add-hook 'text-mode-hook
             (lambda ()
               (progn
-                ;; (variable-pitch-mode 1)
                 (enable-distraction-free-writing)))))
 
 (defun setup-markdown-mode ()
   "Customize `markdown-mode'."
-  ;; (custom-theme-set-faces
-  ;;  'user
-  ;;  `(markdown-inline-code-face ((t (:inherit
-  ;;                                   (markdown-code-face
-  ;;                                    markdown-pre-face
-  ;;                                    shadow
-  ;;                                    fixed-pitch) :height 1.0)))))
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
-                ;; (variable-pitch-mode 1)
-                (typo-mode -1)
                 (enable-distraction-free-writing)))))
 
 (defun customize-modes ()
   "Customize different modes."
-  ;; (custom-theme-set-faces
-  ;;   'user
-  ;;   `(default ((t (:family ,base-font-face
-  ;;                          :slant normal
-  ;;                          :height 130))))
-  ;;   `(variable-pitch ((t (:family ,serif-font-face
-  ;;                                 :height 1.5
-  ;;                                 :weight normal))))
-  ;;   `(fixed-pitch ((t (:family ,monospace-font-face
-  ;;                             :slant normal
-  ;;                             :height 0.8)))))
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
@@ -436,15 +355,19 @@ Deletes whitespace at join."
 (defun customize-editor-behavior ()
   "Customize common editor behavior."
 
+  (message "customize-editor-behavior")
+
   ;; "Use utf-8 everywhere."
-  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
 
   (setup-auto-saves-and-bkups)
 
-  (setq-default
+  (setq
    ;; Use left-option as `meta' but retain right-option as such.
-   ns-alternate-modifier 'meta
-   ns-right-alternate-modifier 'none
+   mac-option-modifier 'meta
+   mac-right-option-modifier nil
+
+   use-short-answers t
 
    ;; Use '4' spaces instead of a 'tab' character.
    tab-width 4
@@ -469,6 +392,5 @@ Deletes whitespace at join."
   (when (eq system-type 'darwin)
     (advice-add 'handle-delete-frame :override
                 #'handle-delete-frame-without-kill-emacs)))
-
 
 ;;; funcs.el ends here
