@@ -433,39 +433,38 @@ Deletes whitespace at join."
       ;; Not (save-buffers-kill-emacs) but instead:
       (ns-do-hide-emacs))))
 
-(defun use-utf-8-everywhere ()
-  "Use utf-8 everywhere."
-  (set-language-environment 'utf-8)
-  (set-default-coding-systems 'utf-8))
-
 (defun customize-editor-behavior ()
   "Customize common editor behavior."
-  ;; Start server.
-  (setq-default dotspacemacs-enable-server t)
 
-  (use-utf-8-everywhere)
+  ;; "Use utf-8 everywhere."
+  (set-default-coding-systems 'utf-8)
 
   (setup-auto-saves-and-bkups)
 
-  ;; Use '4' spaces instead of a 'tab' character.
-  (setq-default tab-width 4)
-  (setq-default indent-tabs-mode nil)
+  (setq-default
+   ;; Use left-option as `meta' but retain right-option as such.
+   ns-alternate-modifier 'meta
+   ns-right-alternate-modifier 'none
 
-  ;; By default, set column width to '80' characters.
-  (setq-default fill-column 80)
+   ;; Use '4' spaces instead of a 'tab' character.
+   tab-width 4
+   indent-tabs-mode nil
 
-  ;; Ensure files always end with a new line.
-  (setq-default require-final-newline t)
+   ;; By default, set column width to '80' characters.
+   fill-column 80
 
-  ;; Stop emacs from arbitrarily adding lines to the end of a file,
-  ;;  when cursor is moved past the end of it.
-  (setq-default next-line-add-newlines nil)
+   ;; Ensure files always end with a new line.
+   require-final-newline t
 
-  ;; Show recently opened files in helm.
-  (setq-default helm-ff-file-name-history-use-recentf t)
+   ;; Stop emacs from arbitrarily adding lines to the end of a file, when cursor
+   ;;  is moved past the end of it.
+   next-line-add-newlines nil
 
-  ;; Configure projectile to use `.projectile' files, if any, in the project directory.
-  (setq projectile-indexing-method 'hybrid)
+   ;; Show recently opened files in helm.
+   helm-ff-file-name-history-use-recentf t
+
+   ;; Configure projectile to use `.projectile' files, if any, in path.
+   projectile-indexing-method 'hybrid)
 
   (when (eq system-type 'darwin)
     (advice-add 'handle-delete-frame :override
