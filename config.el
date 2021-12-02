@@ -11,55 +11,65 @@
 
 ;;; Code:
 
-(defvar emacs-config-dir
+(defconst emacs-config-dir
   (expand-file-name "~/.emacs.d")
   "Path to directory containing spacemacs or emacs configuration.")
 
-(defvar code-templates-dir
+(defconst code-templates-dir
   (expand-file-name "~/.code_templates")
   "Path to directory containing boilerplates.")
 
-(defvar ext-config-dir
+(defconst ext-config-dir
   (expand-file-name "~/.config")
   "Path to directory containing configurations for tools and utilities.")
 
-(defvar proj-name-placeholder "__PROJECT__"
+(defconst proj-name-placeholder "__PROJECT__"
   "String denoting the location of project name in boilerplates.")
 
-(defvar file-name-placeholder "__FILE_NAME__"
+(defconst file-name-placeholder "__FILE_NAME__"
   "String denoting the location of file name in boilerplates.")
 
-(defvar timestamp-placeholder "__TS__"
+(defconst timestamp-placeholder "__TS__"
   "String denoting the location of timestamp in boilerplates.")
 
-(defvar timestamp-fmt "%Y-%m-%d %R %z"
+(defconst timestamp-fmt "%Y-%m-%d %R %z"
   "Format for timestamps in file boilerplates.")
 
-(defvar auto-saves-dir
+(defconst auto-saves-dir
   (concat (file-name-as-directory emacs-config-dir)
           (file-name-as-directory "auto-saves"))
   "Absolute path where automatic saves are stored.")
 
-(defvar auto-bkups-dir
+(defconst auto-bkups-dir
   (concat (file-name-as-directory emacs-config-dir)
           (file-name-as-directory "auto-backups"))
   "Absolute path where automatic backups are stored.")
 
-(defvar auto-save-file-name-prefix ".save_"
+(defconst auto-save-file-name-prefix ".save_"
   "Prefix for naming auto-save file names.")
 
-(defvar base-font-face "Source Code Pro"
+(defconst base-font-face "SauceCodePro Nerd Font" ; "Source Code Pro"
   "Default font family.
 Check the font name with function `can-use-font?' to avoid errors.")
 
-(defvar serif-font-face "Crimson Pro" ; "Linux Biolinum O" ; "Courier Prime"
+(defconst serif-font-face "SauceCodePro Nerd Font" ; "Crimson Pro"
   "Default _serif_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
-(defvar monospace-font-face "Source Code Pro"
+(defconst monospace-font-face "SauceCodePro Nerd Font" ; "Source Code Pro"
   "Default _monospace_ font family for `org-mode', `text-mode', and others.
 Check the font name with function `can-use-font?' to avoid errors.")
 
+(defconst custom-file
+  (concat (file-name-as-directory
+           (expand-file-name "~/.emacs.d")) "custom.el")
+  "File for storing auto-generated custom variable definitions.")
+
+(defconst opam-user-setup-file
+  (concat
+   (file-name-as-directory (expand-file-name "~/.emacs.d"))
+   "opam-user-setup.el")
+  "Auto-generated opam user-setup configuration file.")
 
 ;; --- Run all customizations. ---
 ;; --------------------------------------------------
