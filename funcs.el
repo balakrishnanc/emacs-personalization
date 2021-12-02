@@ -338,16 +338,16 @@ Deletes whitespace at join."
        spaceline-org-clock-p t)
       (fmt-org-bullets)
       (fmt-org-mode-style)
-      (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree)))
+      (evil-leader/set-key "t ;" 'org-toggle-narrow-to-subtree))
 
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (progn
-                ;; For `org-mode' to _safely_ store notes.
-                (auto-save-mode 1)
-                ;; For customizing look and feel.
-                (variable-pitch-mode 1)
-                (enable-distraction-free-writing)))))
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (progn
+                  ;; For `org-mode' to _safely_ store notes.
+                  (auto-save-mode 1)
+                  ;; For customizing look and feel.
+                  ;; (variable-pitch-mode 1)
+                  (enable-distraction-free-writing))))))
 
 (defun setup-latex-mode ()
   "Customize `latex-mode'."
@@ -364,7 +364,7 @@ Deletes whitespace at join."
   (add-hook 'LaTeX-mode-hook
             (lambda ()
               (progn
-                (variable-pitch-mode 1)
+                ;; (variable-pitch-mode 1)
                 (enable-distraction-free-writing))))
 
   ;; Perform full-document previews.
@@ -375,38 +375,38 @@ Deletes whitespace at join."
   (add-hook 'text-mode-hook
             (lambda ()
               (progn
-                (variable-pitch-mode 1)
+                ;; (variable-pitch-mode 1)
                 (enable-distraction-free-writing)))))
 
 (defun setup-markdown-mode ()
   "Customize `markdown-mode'."
-  (custom-theme-set-faces
-   'user
-   `(markdown-inline-code-face ((t (:inherit
-                                    (markdown-code-face
-                                     markdown-pre-face
-                                     shadow
-                                     fixed-pitch) :height 1.0)))))
+  ;; (custom-theme-set-faces
+  ;;  'user
+  ;;  `(markdown-inline-code-face ((t (:inherit
+  ;;                                   (markdown-code-face
+  ;;                                    markdown-pre-face
+  ;;                                    shadow
+  ;;                                    fixed-pitch) :height 1.0)))))
   (add-hook 'markdown-mode-hook
             (lambda ()
               (progn
-                (variable-pitch-mode 1)
+                ;; (variable-pitch-mode 1)
                 (typo-mode -1)
                 (enable-distraction-free-writing)))))
 
 (defun customize-modes ()
   "Customize different modes."
-  (custom-theme-set-faces
-    'user
-    `(default ((t (:family ,base-font-face
-                           :slant normal
-                           :height 130))))
-    `(variable-pitch ((t (:family ,serif-font-face
-                                  :height 1.5
-                                  :weight normal))))
-    `(fixed-pitch ((t (:family ,monospace-font-face
-                              :slant normal
-                              :height 0.8)))))
+  ;; (custom-theme-set-faces
+  ;;   'user
+  ;;   `(default ((t (:family ,base-font-face
+  ;;                          :slant normal
+  ;;                          :height 130))))
+  ;;   `(variable-pitch ((t (:family ,serif-font-face
+  ;;                                 :height 1.5
+  ;;                                 :weight normal))))
+  ;;   `(fixed-pitch ((t (:family ,monospace-font-face
+  ;;                             :slant normal
+  ;;                             :height 0.8)))))
   (setup-programming-mode)
   (setup-org-mode)
   (setup-latex-mode)
