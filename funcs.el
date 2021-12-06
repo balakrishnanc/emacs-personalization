@@ -219,7 +219,15 @@ Deletes whitespace at join."
   (global-prettify-symbols-mode t)
 
   ;; Highlight current line.
-  (global-hl-line-mode -1))
+  (global-hl-line-mode -1)
+
+  ;; Customize fonts.
+  (set-face-attribute 'default nil
+                      :font fixed-pitch-font-face
+                      :height 140)
+  (set-face-attribute 'variable-pitch nil
+                      :font variable-pitch-font-face
+                      :height 1.2))
 
 
 ;; --- Customize modes.

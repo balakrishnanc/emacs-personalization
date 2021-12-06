@@ -24,6 +24,7 @@
                 :fetcher github
                 :repo "protesilaos/modus-themes"))
     olivetti
+    org-variable-pitch
     pretty-mode)
   "Packages required by the personalization layer.")
 
@@ -113,6 +114,12 @@
 
 (defun personalization/init-olivetti ()
   (use-package olivetti))
+
+(defun personalization/init-org-variable-pitch ()
+  (use-package org-variable-pitch
+    :config
+    (add-hook 'org-mode-hook
+              'org-variable-pitch-minor-mode)))
 
 (defun personalization/init-pretty-mode ()
   (use-package pretty-mode))

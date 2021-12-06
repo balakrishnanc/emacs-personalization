@@ -59,4 +59,12 @@
    "opam-user-setup.el")
   "Auto-generated opam user-setup configuration file.")
 
+(defconst fixed-pitch-font-face
+  "FiraCode Nerd Font"
+  "Primary font face, for fixed-width text.")
+
+(defconst variable-pitch-font-face
+  "iA Writer Mono V"
+  "Proportional font for variable-pitch mode.")
+
 ;;; config.el ends here
