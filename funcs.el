@@ -243,10 +243,6 @@ Deletes whitespace at join."
                   (when (and (file-exists-p sbcl-bin)
                              (file-executable-p sbcl-bin))
                     (setq inferior-lisp-program sbcl-bin)))
-
-                ;; ;; Minor mode to keep S-expressions safely balanced.
-                ;; (spacemacs/toggle-evil-safe-lisp-structural-editing-on-register-hook-common-lisp-mode)
-
                 (pretty-mode)))))
 
 (defun setup-programming-mode ()
@@ -357,8 +353,6 @@ Deletes whitespace at join."
 
 (defun customize-editor-behavior ()
   "Customize common editor behavior."
-
-  (message "customize-editor-behavior")
 
   ;; "Use utf-8 everywhere."
   (set-terminal-coding-system 'utf-8)
