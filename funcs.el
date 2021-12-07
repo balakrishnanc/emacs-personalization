@@ -216,13 +216,67 @@ Deletes whitespace at join."
   ;; Highlight current line.
   (global-hl-line-mode -1)
 
+  (create-fontset-from-fontset-spec
+   (font-xlfd-name
+    (font-spec :family fixed-pitch-font-face
+               :size 140
+               :registry "fontset-bc proportional fontset")))
+  (set-fontset-font "fontset-bc proportional fontset"
+                    'symbol
+                    (font-spec :family "FontAwesome"))
+
   ;; Customize fonts.
   (set-face-attribute 'default nil
                       :font fixed-pitch-font-face
                       :height 140)
   (set-face-attribute 'variable-pitch nil
                       :font variable-pitch-font-face
-                      :height 1.2))
+                      :height 1.1)
+
+  (defun color-of (attr colors)
+    (cdr (assq attr colors)))
+
+  (setq theming-modifications
+        `((modus-vivendi
+           (deft-title-face
+            :foreground ,(color-of 'fg-special-mild
+                                   modus-themes-vivendi-colors))
+           (deft-summary-face
+            :foreground ,(color-of 'bg-special-warm
+                                   modus-themes-vivendi-colors))
+           (deft-time-face
+            :height 0.8)
+           (org-level-1
+            :overline ,(color-of 'magenta-alt
+                                 modus-themes-vivendi-colors)
+            :background ,(color-of 'bg-alt
+                                   modus-themes-vivendi-colors))
+           (org-level-2
+            :overline ,(color-of 'magenta-alt-other
+                                 modus-themes-vivendi-colors)
+            :background ,(color-of 'bg-alt
+                                   modus-themes-vivendi-colors))
+           (org-document-title :height 1.1))
+          (modus-operandi
+           (deft-title-face
+            :foreground ,(color-of 'fg-special-mild
+                                   modus-themes-operandi-colors))
+           (deft-summary-face
+            :foreground ,(color-of 'bg-special-warm
+                                   modus-themes-operandi-colors))
+           (deft-time-face
+            :height 0.8)
+           (org-level-1
+            :overline ,(color-of 'magenta-alt
+                                 modus-themes-operandi-colors)
+            :background ,(color-of 'bg-alt
+                                   modus-themes-operandi-colors))
+           (org-level-2
+            :overline ,(color-of 'magenta-alt-other
+                                 modus-themes-operandi-colors)
+            :background ,(color-of 'bg-alt
+                                   modus-themes-operandi-colors))
+           (org-document-title :height 1.1)))))
 
 
 ;; --- Customize modes.
