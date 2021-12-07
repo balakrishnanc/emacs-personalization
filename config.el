@@ -64,7 +64,7 @@
   "Primary font face, for fixed-width text.")
 
 (defconst variable-pitch-font-face
-  "iA Writer Mono V"
+  "iA Writer Quattro V" ; "iA Writer Mono V"
   "Proportional font for variable-pitch mode.")
 
 ;;; config.el ends here
