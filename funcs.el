@@ -153,31 +153,6 @@ Deletes whitespace at join."
 
 (defun customize-look-and-feel ()
   "Customize how the editor frame or window looks and feels."
-  ;; Increase space between text and the border or fringe.
-  (add-to-list 'default-frame-alist '(internal-border-width . 20))
-
-  (global-prettify-symbols-mode t)
-
-  ;; Highlight current line.
-  (global-hl-line-mode -1)
-
-  (create-fontset-from-fontset-spec
-   (font-xlfd-name
-    (font-spec :family fixed-pitch-font-face
-               :size 140
-               :registry "fontset-bc proportional fontset")))
-  (set-fontset-font "fontset-bc proportional fontset"
-                    'symbol
-                    (font-spec :family "FontAwesome"))
-
-  ;; Customize fonts.
-  (set-face-attribute 'default nil
-                      :font fixed-pitch-font-face
-                      :height 140)
-  (set-face-attribute 'variable-pitch nil
-                      :font variable-pitch-font-face
-                      :height 1.1)
-
   (defun color-of (attr colors)
     (cdr (assq attr colors)))
 
@@ -334,9 +309,11 @@ Deletes whitespace at join."
   "Customize the Emacs environment."
   (add-to-list 'load-path personalization-base-dir)
 
-  (customize-look-and-feel)
-  (customize-modes)
+  (require 'layout)
+  (personalization/init-layout)
   (require 'minimal)
-  (personalization/minimal-conf))
+  (personalization/minimal-conf)
+  (customize-look-and-feel)
+  (customize-modes))
 
 ;;; funcs.el ends here

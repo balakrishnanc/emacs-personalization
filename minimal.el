@@ -84,7 +84,19 @@
     (recover-file (buffer-name))))
 
 
-(defun personalization//minimal-conf--general ()
+(defun personalization//minimal-conf-ui ()
+  "Customize UI configuration for a simple editing environment."
+  ;; Disable toolbar, menubar, scrollbar, and tooltips.
+  (if (fboundp 'tool-bar-mode)
+      (tool-bar-mode 0))
+  (if (fboundp 'scroll-bar-mode)
+      (scroll-bar-mode 0))
+  (if (fboundp 'menu-bar-mode)
+      (menu-bar-mode 0))
+  (if (fboundp 'tooltip-mode)
+      (tooltip-mode 0)))
+
+(defun personalization//minimal-conf-general ()
   "General configuration for a minimal editing environment."
   (setq
    ;; Disable startup screen and message.
@@ -154,16 +166,6 @@
    ;; Configure projectile to use `.projectile' files, if any, in path.
    projectile-indexing-method 'hybrid)
 
-  ;; Disable toolbar, menubar, scrollbar, and tooltips.
-  (if (fboundp 'tool-bar-mode)
-      (tool-bar-mode 0))
-  (if (fboundp 'scroll-bar-mode)
-      (scroll-bar-mode 0))
-  (if (fboundp 'menu-bar-mode)
-      (menu-bar-mode 0))
-  (if (fboundp 'tooltip-mode)
-      (tooltip-mode 0))
-
   ;; Navigate windows using `shift+direction'.
   (windmove-default-keybindings)
 
@@ -177,7 +179,7 @@
   (setup-auto-saves-and-bkups))
 
 
-(defun personalization//minimal-conf--macos ()
+(defun personalization//minimal-conf-macos ()
   "MacOS-specific configuration for a minimal editing environment."
   (when (eq system-type 'darwin)
     (progn
@@ -185,17 +187,47 @@
        ;; Use left-option as `meta', but retain right-option *as such*.
        mac-option-modifier 'meta
        mac-right-option-modifier nil
-
        ns-use-native-fullscreen t)
 
       (advice-add 'handle-delete-frame :override
                   #'handle-delete-frame-without-kill-emacs))))
 
 
+(defun personalization//minimal-font-setup ()
+  "Setup fonts."
+  (create-fontset-from-fontset-spec
+   (font-xlfd-name
+    (font-spec :family fixed-pitch-font-face
+               :size 140
+               :registry "fontset-bc proportional fontset")))
+  (set-fontset-font "fontset-bc proportional fontset"
+                    'symbol
+                    (font-spec :family "FontAwesome"))
+
+  ;; Customize fonts.
+  (set-face-attribute 'default nil
+                      :font fixed-pitch-font-face
+                      :height 140)
+  (set-face-attribute 'variable-pitch nil
+                      :font variable-pitch-font-face
+                      :height 1.1))
+
+
+(defun personalization//minimal-conf-modes ()
+  "Customize modes."
+  (global-prettify-symbols-mode t)
+
+  ;; Disable highligting current line.
+  (global-hl-line-mode -1))
+
+
 (defun personalization/minimal-conf ()
   "Configure a minimal editing environment."
-  (personalization//minimal-conf--general)
-  (personalization//minimal-conf--macos))
+  (personalization//minimal-conf-ui)
+  (personalization//minimal-conf-general)
+  (personalization//minimal-conf-macos)
+  (personalization//minimal-font-setup)
+  (personalization//minimal-conf-modes))
 
 
 (provide 'minimal)
