@@ -14,19 +14,30 @@
 ;;; Code:
 
 (defconst personalization-packages
-  '(deft
+  '((bespoke-themes
+     :location (recipe
+                :fetcher github
+                :repo "mclear-tools/bespoke-themes"))
+    deft
     doom-themes
     gnuplot-mode
     goto-last-change
     helm-projectile
-    (modus-themes
-     :location (recipe
-                :fetcher github
-                :repo "protesilaos/modus-themes"))
+    modus-themes
     olivetti
     org-variable-pitch
     pretty-mode)
   "Packages required by the personalization layer.")
+
+(defun personalization/init-bespoke-themes ()
+  (use-package bespoke-themes
+    :config (progn
+              (setq
+               bespoke-set-evil-cursors t
+               bespoke-set-italic-comments t
+               bespoke-set-italic-keywords t
+               bespoke-set-variable-pitch t)
+              (load-theme 'bespoke t))))
 
 (defun personalization/post-init-deft ()
   (use-package deft
@@ -90,7 +101,7 @@
               (add-to-list 'helm-projectile-sources-list
                            helm-source-file-not-found t))))
 
-(defun personalization/init-modus-themes ()
+(defun personalization/post-init-modus-themes ()
   (use-package modus-themes
     :ensure t
     :init (progn
