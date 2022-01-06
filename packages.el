@@ -85,8 +85,7 @@
            "\\.plot\\'")))
 
 (defun personalization/init-goto-last-change ()
-  (use-package goto-last-change
-    :bind ("C-x C-/" . goto-last-change)))
+  (use-package goto-last-change))
 
 (defun personalization/post-init-helm-projectile ()
   (use-package helm-projectile
@@ -120,8 +119,7 @@
           modus-themes-italic-constructs t
           modus-themes-mixed-fonts t
           modus-themes-scale-headings t
-          modus-themes-variable-pitch-headings t)
-    :bind ("<f6>" . modus-themes-toggle)))
+          modus-themes-variable-pitch-headings t)))
 
 (defun personalization/init-olivetti ()
   (use-package olivetti))

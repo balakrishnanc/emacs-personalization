@@ -21,7 +21,6 @@
 (global-set-key (kbd "C-M-+") 'text-scale-increase)
 (global-set-key (kbd "C-M--") 'text-scale-decrease)
 
-;; Comment or Uncomment region in buffer.
 (global-set-key (kbd "C-M-]") 'comment-region)
 (global-set-key (kbd "C-M-[") 'uncomment-region)
 
@@ -33,7 +32,10 @@
 ;; Recover current file-visiting or non-file-visiting buffer.
 (global-set-key (kbd "C-`") 'recover-this-buffer)
 
-;; Enable distraction-free writing mode.
 (global-set-key '[f12] 'toggle-distraction-free-writing)
+
+(global-set-key (kbd "C-x C-/") 'goto-last-change)
+
+(global-set-key '[f6] 'modus-themes-toggle)
 
 ;;; keybindings.el ends here
