@@ -11,6 +11,10 @@
 
 ;;; Code:
 
+(defconst personalization-base-dir
+  (file-name-directory load-file-name)
+  "Package directory.")
+
 (defconst emacs-config-dir
   (expand-file-name "~/.emacs.d")
   "Path to directory containing spacemacs or emacs configuration.")
