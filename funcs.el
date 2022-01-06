@@ -1,6 +1,6 @@
 ;;; funcs.el --- personalization layer functions file for Spacemacs.
 ;;
-;; Copyright (c) 2017-2021 Balakrishnan Chandrasekaran
+;; Copyright (c) 2017-2022 Balakrishnan Chandrasekaran
 ;;
 ;; Author: Balakrishnan Chandrasekaran <balakrishnan.c@gmail.com>
 ;; URL: https://github.com/balakrishnanc/emacs-personalization
